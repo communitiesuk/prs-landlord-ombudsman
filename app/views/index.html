@@ -5,24 +5,67 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+   {# {% include "govuk-prototype-kit/includes/homepage-top.njk" %} #}
 
     <h1 class="govuk-heading-xl">
-      {{ serviceName }}
+      Alpha prototypes
     </h1>
 
-    <h2 class="govuk-heading-l">
-      Sprints
+<table class="govuk-table">
+  <!-- <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> -->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Sprint</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!-- <tr class="govuk-table__row">
+      <td class="govuk-table__cell">N/A</td>
+      <td class="govuk-table__cell"><a href="/prototypes/sprint-00/">Sprint 00</a></td>
+      <td class="govuk-table__cell">9 June 2015 - 18 June 2015</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Current</strong></td>
+    </tr> -->
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">N/A</td>
+      <td class="govuk-table__cell"><a href="/prototypes/sprint-00/">Sprint 0</a></td>
+      <td class="govuk-table__cell">9 June 2015 - 18 June 2015</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Current</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2 class="govuk-heading-m">
+      Design assests
     </h2>
 
     <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/prototypes/sprint-00/">Sprint 00</a></li>
-        <li><a href="/prototypes/sprint-01/">Sprint 01</a></li>
+        <li></li>
     </ul>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <h2 class="govuk-heading-m">
+      Team resources
+    </h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li></li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Prototype
+    </h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/manage-prototype/">Manage</a></li>
+    </ul>
+
+
+    {# {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %} #}
+
   </div>
 </div>
 
