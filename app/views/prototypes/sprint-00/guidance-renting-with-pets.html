@@ -1,0 +1,197 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Mainstream guide example
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Renting with pets
+      </h1>
+
+      <aside class="govuk-prototype-kit-common-templates-mainstream-guide-contents-list" role="complementary">
+        <nav class="govuk-prototype-kit-common-templates-contents-list" aria-label="Pages in this guide" role="navigation">
+          <h2 class="govuk-prototype-kit-common-templates-contents-list__title">
+            Contents
+          </h2>
+          <ol class="govuk-prototype-kit-common-templates-contents-list__list">
+            <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed govuk-prototype-kit-common-templates-contents-list__list-item--active">
+                Asking for a pet
+            </li>
+            <li aria-current="true" class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+              <a href="#reason-for-refusal">
+                Reasons for refusal
+              </a>
+            </li>
+            <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+              <a href="#insurance">
+                Insurance
+              </a>
+            </li>
+            <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+              <a href="#deposits">
+                Deposits
+              </a>
+            </li>
+            <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+              <a href="#problems">
+                Problems when you have a pet
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+      
+      <h2 class="govuk-heading-m">
+        Asking for a pet
+      </h2>
+      
+      <p>If you want to keep a pet, you should ask your landlord in writing and include a description of your pet. This could include the type or size of your pet. Your landlord cannot refuse without a fair reason.</p>
+      <p>Once you have asked to keep a pet, your landlord has up to 28 days to respond in writing.</p>
+      <p>They can ask for more information from you if needed.</p>
+      <p>If your landlord asks for information about your pet, you should give them the information they have requested.</p>
+      <p>If you do not respond, your landlord does not have to consider your request.</p>
+      <p>Once your landlord agrees to you having a pet, they cannot change their mind or change your tenancy agreement. Even if this happens, you can still keep your pet.</p>
+
+      <h2 class="govuk-heading-m" id="reason-for-refusal">
+        Reasons for refusal
+      </h2>
+
+      <p>Your landlord cannot refuse a request for a pet without a fair reason.</p>
+
+      <p>There may be situations where it would be reasonable for your landlord to refuse a pet, for example if:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a person you live with has an allergy</li>
+        <li>the property is too small for a large pet or several pets </li>
+        <li>a freeholder owns the property, and they have a clause saying no pets are allowed in any of the properties</li>
+        <li>a pet is illegal to own</li>
+      </ul>
+
+      <p>It would be unreasonable for your landlord to refuse a pet if they:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>do not like pets</li>
+        <li>have had issues with tenants who had pets in the past</li>
+        <li>think a pet might affect future rentals</li>
+      </ul>
+
+      <p>You have the right to challenge the refusal if you think it is unreasonable.</p>
+
+      <h2 class="govuk-heading-m" id="insurance">
+        Insurance
+      </h2>
+
+      <p>If your landlord has agreed to you having a pet, they could get insurance to cover the risk of any damage by the pet. Alternatively, your landlord could ask you to take out insurance instead.</p>
+
+      <p>If your landlord takes out insurance, they will need to agree with you on how to pay for it. They can only ask you to pay for the part of the premium that covers pet damage. If you have insurance for pet damage, you would cover the cost of the premium.</p>
+
+      <h2 class="govuk-heading-m" id="deposits">
+        Deposits
+      </h2>
+
+      <p>If your landlord pays for the insurance, they can claim for any damage caused by a pet through insurance or keep money from the deposit. They may use the deposit for smaller amounts of damage as this may help to keep the premium lower. However, it is illegal for them to claim for the same damage twice.</p>
+
+      <h2 class="govuk-heading-m" id="problems">
+        Problems when you have a pet
+      </h2>
+
+      <p>If your pet damages the property, you should tell your landlord. To avoid being charged, you should agree with the landlord on how to repair it. If you have insurance, you may be able to claim for the damage.</p>
+
+      <nav class="govuk-prototype-kit-common-templates-pagination" role="navigation" aria-label="Pagination">
+
+      {{ govukPagination({
+        previous: {
+          labelText: "Page 1 title",
+          href: "#"
+        },
+        next: {
+          labelText: "Page 3 title",
+          href: "#"
+        }
+      }) }}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+
+  </main>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
