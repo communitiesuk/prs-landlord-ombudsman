@@ -3,14 +3,6 @@
 {% set pageName="Home" %}
 
 {% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-
-{{ govukPhaseBanner({
-  tag: {
-    text: "Prototype"
-  },
-  html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
-}) }}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
