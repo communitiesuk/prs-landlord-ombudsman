@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Do you live in a private rented house or flat in England or Wales?
+              </h1>
+            </legend>
+            <div id="signIn-hint" class="govuk-hint">
+              This does not include council or housing association accommodation.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="ans" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+                <!-- <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  Landlord legal issues, Eviction, Deposits, Tenant fees, Rent or Pets 
+                </div> -->
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="ans" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+                <!-- <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  Internal structural repairs, External structural repairs, Damp and mould, Fire related, Faulty or missing appliances, Pest infestation, Access issues 
+                </div> -->
+              </div>
+            </div>
+          </fieldset>
+        </div>
+          <button class="govuk-button" data-module="govuk-button" name="" value="">
+            Continue
+          </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
