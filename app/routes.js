@@ -16,7 +16,13 @@ router.use((req, res, next) => {
   }
 
   // Make the cookie value available to templates - convert string to boolean, default to true if undefined
-  res.locals.govBranded = req.cookies.govBranded === undefined ? true : req.cookies.govBranded === "true";
+  res.locals.govBranded =
+    req.cookies.govBranded === undefined
+      ? true
+      : req.cookies.govBranded === "true";
+
+  res.locals.chatbot =
+    req.cookies.chatbot === undefined ? true : req.cookies.chatbot === "true";
 
   next();
 });
@@ -31,6 +37,14 @@ router.use("/prototypes/sprint-01", sprint01);
 
 router.use("/switch-branding", (req, res) => {
   res.cookie("govBranded", !res.locals.govBranded, {
+    maxAge: 900000,
+    httpOnly: true,
+  });
+  res.redirect(req.query.redirectTo || "/");
+});
+
+router.use("/toggle-chatbot", (req, res) => {
+  res.cookie("chatbot", !res.locals.chatbot, {
     maxAge: 900000,
     httpOnly: true,
   });
