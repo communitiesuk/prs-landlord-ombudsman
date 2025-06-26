@@ -1,46 +1,51 @@
-{% extends "layouts/main.html" %}
-
-{% set pageName="Home" %}
-
-{% block beforeContent %}
-
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-
-{% endblock %}
-
-{% block content %}
+{% extends "layouts/main.html" %} {% set pageName="Home" %} {% block
+beforeContent %} {% from "govuk/components/back-link/macro.njk" import
+govukBackLink %} {{ govukBackLink({ text: "Back", href:
+"javascript:window.history.back()" }) }} {% endblock %} {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">18 June 2025 - 2 July 2025</span>
     <h1 class="govuk-heading-xl">Alpha sprint 1</h1>
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Experiments</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Variants</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Tasks</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell"><a href="start">Basic structure</a></td>
-      <td class="govuk-table__cell">N/A</td>
-      <td class="govuk-table__cell">
-        <ol class="govuk-list govuk-list--number">
-          <li></li>
-        </ol>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">
+        Experiments
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">
+            Prototype
+          </th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">
+            Variants
+          </th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">
+            Tasks
+          </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="start">Basic structure</a></td>
+          <td class="govuk-table__cell">N/A</td>
+          <td class="govuk-table__cell">
+            <ol class="govuk-list govuk-list--number">
+              <li></li>
+            </ol>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="start">Chatbot</a></td>
+          <td class="govuk-table__cell">N/A</td>
+          <td class="govuk-table__cell">
+            <ol class="govuk-list govuk-list--number">
+              <li></li>
+            </ol>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
