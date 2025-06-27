@@ -5,24 +5,23 @@ block content %}
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Tell us about your issue</h1>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="problem-description">
+    <form method="post">
+      <label class="govuk-label" for="description">
         Describe your issue in detail
       </label>
       <textarea
         class="govuk-textarea"
-        id="problem-description"
-        name="problem-description"
+        id="description"
+        name="description"
         rows="12"
-        aria-describedby="problem-description-hint"
+        aria-describedby="description-hint"
       ></textarea>
-      <div id="problem-description-hint" class="govuk-hint">
+      <div id="description-hint" class="govuk-hint">
         Include any relevant details about your situation, such as when the
         problem started and what you've already tried to resolve it.
       </div>
-    </div>
-
-    {{ govukButton({ text: "Continue", href: "answer" }) }}
+      {{ govukButton({ text: "Continue", type: "submit" }) }}
+    </form>
   </div>
 </div>
 {% endblock %}

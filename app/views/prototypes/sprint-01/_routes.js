@@ -30,4 +30,8 @@ router.post("/what-do-you-need-help-with", function (req, res) {
   }
 });
 
+router.post("/chatbot", function (req, res) {
+  res.redirect("answer");
+});
+
 module.exports = router;

@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %} {% block beforeContent %} {{ govukBackLink({
+text: "Back", href: "javascript:window.history.back()" }) }} {% endblock %} {%
+block content %}
+<style type="text/css">
+  .govuk-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.5rem;
+  }
+
+  .govuk-list li {
+    max-width: 60%;
+    padding: 1rem;
+    background-color: #f3f2f1;
+  }
+
+  .govuk-list li:nth-child(2) {
+    align-self: flex-end;
+    background-color: #1d70b8;
+    > p {
+      color: #ffffff;
+    }
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .prs-divider {
+    background-color: #b1b4b6;
+    margin: 1.5rem 0;
+    width: 100%;
+    height: 0.1rem;
+  }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Your issue</h2>
+    <p class="govuk-body-m govuk-!-margin-bottom-8">
+      You told us you have the following issue with your rented property
+    </p>
+    <ol class="govuk-list">
+      <li class="">{{ data.description }}</li>
+      <li>
+        <p class="govuk-body-m">Under the ACT of YEAR, you have...</p>
+        <p class="govuk-body-m">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+          fringilla mauris id erat commodo ornare. Fusce dictum nisl dictum
+          neque venenatis, euismod lacinia tellus iaculis. In sed neque congue,
+          efficitur eros sed, condimentum turpis. Morbi tempus, nunc vitae
+          efficitur maximus, odio urna consectetur tellus, et euismod nisl
+          libero quis libero. Cras tincidunt diam est, non rhoncus enim
+          fermentum in. Ut nec tempus arcu, sed faucibus erat. Nam bibendum
+          tempus tellus, nec consectetur nisi volutpat non. Curabitur molestie
+          lorem sit amet quam bibendum mattis.
+        </p>
+      </li>
+    </ol>
+    <div class="prs-divider"></div>
+    <p class="govuk-body-m">Did this help you resolve your issue?</p>
+    <div class="govuk-button-group">
+      <button
+        type="submit"
+        class="govuk-button govuk-button--secondary"
+        data-module="govuk-button"
+      >
+        No it didn't
+      </button>
+      <button
+        type="button"
+        class="govuk-button govuk-button"
+        data-module="govuk-button"
+      >
+        Yes it did
+      </button>
+    </div>
+  </div>
+  {% endblock %}
+</div>
