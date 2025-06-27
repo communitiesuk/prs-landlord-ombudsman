@@ -6,29 +6,62 @@ const router = govukPrototypeKit.requests.setupRouter();
 
 // Add your routes above the module.exports line
 
-router.post("/", function (req, res) {
-  res.redirect("how-are-you-feeling");
-});
+// Multiple
 
-router.post("/eng-wal-private-renting", function (req, res) {
-  if (req.session.data["ans"] == "Yes") {
-    if (req.cookies.chatbot) {
-      res.redirect("chatbot");
-    } else {
+router.post(
+  "/multiple/are-you-renting-in-england-or-wales",
+  function (req, res) {
+    if (req.session.data["renting-in-england-or-wales"] == "Yes") {
       res.redirect("what-do-you-need-help-with");
+    } else if (req.session.data["renting-in-england-or-wales"] == "No") {
+      res.redirect("cannot-use-service");
     }
-  } else if (req.session.data["ans"] == "No") {
-    res.redirect("not-private-renting-within-eng-or-wal");
   }
-});
+);
 
-router.post("/what-do-you-need-help-with", function (req, res) {
-  if (req.session.data["help"] == "con") {
+router.post("/multiple/what-do-you-need-help-with", function (req, res) {
+  if (req.session.data["need-help-with"] == "contractual") {
     res.redirect("contractual");
-  } else if (req.session.data["help"] == "main") {
+  } else if (req.session.data["need-help-with"] == "maintanence") {
     res.redirect("maintanence-and-repairs");
   }
 });
+
+router.post("/multiple/contractual", function (req, res) {
+  res.redirect("landlord-legal-issues");
+});
+
+router.post("/multiple/landlord-legal-issues", function (req, res) {
+  res.redirect("triage-results");
+});
+
+// Single
+
+router.post("/single/are-you-renting-in-england-or-wales", function (req, res) {
+  if (req.session.data["renting-in-england-or-wales"] == "Yes") {
+    res.redirect("what-do-you-need-help-with");
+  } else if (req.session.data["renting-in-england-or-wales"] == "No") {
+    res.redirect("cannot-use-service");
+  }
+});
+
+router.post("/single/what-do-you-need-help-with", function (req, res) {
+  if (req.session.data["need-help-with"] == "contractual") {
+    res.redirect("contractual");
+  } else if (req.session.data["need-help-with"] == "maintanence") {
+    res.redirect("maintanence-and-repairs");
+  }
+});
+
+router.post("/single/contractual", function (req, res) {
+  res.redirect("landlord-legal-issues");
+});
+
+router.post("/single/landlord-legal-issues", function (req, res) {
+  res.redirect("triage-results");
+});
+
+// Chatbot
 
 router.post("/chatbot", function (req, res) {
   res.redirect("answer");
