@@ -63,7 +63,18 @@ router.post("/single/landlord-legal-issues", function (req, res) {
 
 // Chatbot
 
-router.post("/chatbot", function (req, res) {
+router.post(
+  "/chatbot/are-you-renting-in-england-or-wales",
+  function (req, res) {
+    if (req.session.data["renting-in-england-or-wales"] == "Yes") {
+      res.redirect("ask");
+    } else if (req.session.data["renting-in-england-or-wales"] == "No") {
+      res.redirect("cannot-use-service");
+    }
+  }
+);
+
+router.post("/chatbot/ask", function (req, res) {
   res.redirect("answer");
 });
 

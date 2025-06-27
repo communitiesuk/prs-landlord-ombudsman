@@ -42,11 +42,3 @@ router.use("/switch-branding", (req, res) => {
   });
   res.redirect(req.query.redirectTo || "/");
 });
-
-router.use("/toggle-chatbot", (req, res) => {
-  res.cookie("chatbot", !res.locals.chatbot, {
-    maxAge: 900000,
-    httpOnly: true,
-  });
-  res.redirect(req.query.redirectTo || "/");
-});
