@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Future steps and useful resources - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Future steps and useful resources
+      </h1>
+
+      <h2 class="govuk-heading-m">Online resources</h2>
+      <p>You will find more information about fixing housing disrepair issues on these websites.</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li><a href="https://www.advicenow.org.uk/get-help/housing-and-homelessness/repairs/fix-problems-privately-rented-home">Advice Now</a> offers a comprehensive guide to getting problems fixed in your rented home.</li>
+        <li><a href="https://england.shelter.org.uk/housing_advice/repairs">Shelter</a> offers specialist information for tenants with disrepair issues.</li>
+        <li><a href="https://www.citizensadvice.org.uk/housing/repairs-and-housing/repairs-and-housing-conditions/">Citizens Advice</a> offers practical advice and information related to housing disrepair.</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Consider organising the repair work yourself</h2>
+      <p>If the problem is relatively small, you could arrange for the repairs to be done and take the cost out of your rent. However, it’s important to keep your landlord informed, and follow a step-by-step process. You must not stop paying rent without notice.</p>
+      <p><a href="https://england.shelter.org.uk/housing_advice/repairs/withholding_rent_for_repairs">Find out more about organising repairs yourself</a> on the Shelter website.</p>
+
+
+      <h2 class="govuk-heading-m">Get free legal help if you are at risk of losing your home</h2>
+      <p>Government funded legal advice and representation (legal aid) is available to people facing possession proceedings. You must have written evidence (for example, an email or a letter) to access support.</p>
+      <p>Find out more about <a href="https://www.gov.uk/guidance/legal-aid-for-possession-proceedings">legal aid for possession proceedings</a>.</p>
+
+      <h2 class="govuk-heading-m">Speak to someone about the problem</h2>
+      <h3 class="govuk-heading-s">Citizens Advice</h3>
+      <p>Citizens Advice provide information and guidance on housing problems online. You can also chat with an adviser online, call their helpline, or visit one of their face-to-face centres.</p>
+      <p>Adviceline (England): 0800 144 8848</p>
+      <p>Advicelink (Wales): 03444 77 20 20</p>
+      
+      <h3 class="govuk-heading-s">Shelter</h3>
+      <p>Shelter provides advice and support to people with housing issues of all kinds. <a href="https://england.shelter.org.uk/get_help">See the Shelter website for contact details</a>.</p>
+
+      <h2 class="govuk-heading-m">Making complaints about landlords, letting agents and the local council</h2>
+      <p>If you’re unhappy with the way your landlord, letting agent or local council have dealt with the problem, you can make a complaint.</p>
+      <p><a href="#">Find out more about making complaints about landlords</a></p>
+
+      <p class="govuk-body govuk-!-font-weight-bold">Go <a href="next-steps">back to the ‘What to do now’</a>  page.</p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

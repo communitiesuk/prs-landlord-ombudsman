@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  What is the problem with your housing? – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,83 +16,73 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form class="form" method="post">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                What is the problem with your housing?
-              </h1>
-            </legend>
-            <!-- <div id="signIn-hint" class="govuk-hint">
-              You’ll need an account to prove your identity and complete your Self Assessment
-            </div> -->
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn">
-                  Gas, electricity, boiler, heating or hot water supply is not working
-                </label>
-                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes heating that is not working well
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-2">
-                  Outside doors, walls, roof or windows are dangerous or need repair
-                </label>
-                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes uneven flooring, broken stairs
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-3" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-3">
-                  Mice or other pests are causing a problem
-                </label>
-                <!-- <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes uneven flooring, broken stairs
-                </div> -->
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-4" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-4">
-                  Damp or mould is growing inside 
-                </label>
-                <!-- <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes uneven flooring, broken stairs
-                </div> -->
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-5" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-5">
-                  Faulty smoke detectors, fire doors or obstructions causing a fire hazard 
-                </label>
-                <!-- <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes uneven flooring, broken stairs
-                </div> -->
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-6" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-6">
-                  Faulty or missing appliance  
-                </label>
-                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes washing machines, fridges, cookers
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-7" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-7">
-                  Plumbing and leaks (inside or outside) 
-                </label>
-                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Includes toilets, pipes, drains, sinks, showers and baths
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "What is the problem with your housing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+            {
+              value: "",
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
+              hint: {
+                text: "Includes heating that is not working well"
+              }
+            },
+            {
+              value: "",
+              text: "Outside doors, walls, roof or windows are dangerous or need repair",
+              hint: {
+                text: "Includes uneven flooring, broken stairs"
+              }
+            },
+            {
+              value: "",
+              text: "Mice or other pests are causing a problem",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "",
+              text: "Damp or mould is growing inside",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "",
+              text: "Faulty smoke detectors, fire doors or obstructions causing a fire hazard ",
+              hint: {
+                text: ""
+              }
+            },    
+            {
+              value: "",
+              text: "Faulty or missing appliance",
+              hint: {
+                text: "Includes washing machines, fridges, cookers"
+              }
+            },  
+            {
+              value: "",
+              text: " Plumbing and leaks (inside or outside)",
+              hint: {
+                text: "Includes toilets, pipes, drains, sinks, showers and baths"
+              }
+            }
+          ]
+        }) }}
+
               {{ govukButton({
                 text: "Continue"
               }) }}

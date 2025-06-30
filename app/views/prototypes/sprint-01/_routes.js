@@ -57,6 +57,18 @@ router.post("/single/contractual", function (req, res) {
   res.redirect("landlord-legal-issues");
 });
 
+router.post("/single/maintanence-and-repairs", function (req, res) {
+  res.redirect("utility-problem");
+});
+
+router.post("/single/utility-problem", function (req, res) {
+  res.redirect("next-steps");
+});
+
+router.post("/single/landlord-legal-issues", function (req, res) {
+  res.redirect("triage-results");
+});
+
 router.post("/single/landlord-legal-issues", function (req, res) {
   res.redirect("triage-results");
 });

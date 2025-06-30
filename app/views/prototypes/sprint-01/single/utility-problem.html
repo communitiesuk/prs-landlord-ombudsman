@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Landlord legal issues – {{ serviceName }}
+  Gas, electricity, boiler, heating or hot water supply is not working – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,37 +19,39 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "landlordLegalIssues",
+          name: "utilityProblem",
           fieldset: {
             legend: {
-              text: "Landlord legal issues",
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          formGroup: {
+            beforeInputs: {
+              html: "<p>Your landlord must ensure that the boiler and utilties are kept in good working order and supplied safely.</p><div class='govuk-hint'>Select one option</div>"
             }
           },
           items: [
             {
               value: "england",
-              text: "Unlicensed HMO",
-              label: {
-                classes: "hello-world"
-              }
+              text: "Hot water supply"
             },
             {
               value: "scotland",
-              text: "Unlicensed landlord in LA area with selective landlord licensing"
+              text: "Boiler"
             },
             {
               value: "wales",
-              text: "Illegal subletting"
+              text: "Electricity or electric wiring"
             },
             {
               value: "northern-ireland",
-              text: "Not enrolled in PRS database or redress scheme"
+              text: "Gas pipes"
             },
             {
               value: "northern-ireland",
-              text: "Prohibited from renting under terms of lease"
+              text: "Heaters or radiators"
             }  
           ]
         }) }}
