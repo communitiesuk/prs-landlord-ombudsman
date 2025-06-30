@@ -1,81 +1,82 @@
-{% extends "layouts/main.html" %}
-
-{% set pageName="Home" %}
-
-{% block content %}
+{% extends "layouts/main.html" %} {% set pageName="Home" %} {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {# {% include "govuk-prototype-kit/includes/homepage-top.njk" %} #}
 
-   {# {% include "govuk-prototype-kit/includes/homepage-top.njk" %} #}
+    <h1 class="govuk-heading-xl">Alpha prototypes</h1>
 
-    <h1 class="govuk-heading-xl">
-      Alpha prototypes
-    </h1>
-
-<table class="govuk-table">
-  <!-- <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> -->
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <!-- <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th> -->
-      <th scope="col" class="govuk-table__header">Sprint</th>
-      <th scope="col" class="govuk-table__header">Date</th>
-      <th scope="col" class="govuk-table__header">Status</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <!-- <tr class="govuk-table__row">
+    <table class="govuk-table">
+      <!-- <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> -->
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <!-- <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th> -->
+          <th scope="col" class="govuk-table__header">Sprint</th>
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <!-- <tr class="govuk-table__row">
       <td class="govuk-table__cell">N/A</td>
       <td class="govuk-table__cell"><a href="/prototypes/sprint-00/">Sprint 00</a></td>
       <td class="govuk-table__cell">9 June 2015 - 18 June 2015</td>
       <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Current</strong></td>
     </tr> -->
-    <tr class="govuk-table__row">
-      <!-- <td class="govuk-table__cell">N/A</td> -->
-      <td class="govuk-table__cell"><a href="/prototypes/sprint-01/">Sprint 1</a></td>
-      <td class="govuk-table__cell">18 June 2025 - 2 July 2025</td>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Current</strong></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <!-- <td class="govuk-table__cell">N/A</td> -->
-      <td class="govuk-table__cell"><a href="/prototypes/sprint-00/">Sprint 0</a></td>
-      <td class="govuk-table__cell">9 June 2025 - 18 June 2025</td>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Completed</strong></td>
-    </tr>
+        <tr class="govuk-table__row">
+          <!-- <td class="govuk-table__cell">N/A</td> -->
+          <td class="govuk-table__cell">
+            <a href="/prototypes/sprint-01/">Sprint 1</a>
+          </td>
+          <td class="govuk-table__cell">18 June 2025 - 2 July 2025</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">Current</strong>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <!-- <td class="govuk-table__cell">N/A</td> -->
+          <td class="govuk-table__cell">
+            <a href="/prototypes/sprint-00/">Sprint 0</a>
+          </td>
+          <td class="govuk-table__cell">9 June 2025 - 18 June 2025</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--blue">Completed</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  </tbody>
-</table>
-
-    <h2 class="govuk-heading-m">
-      Design assests
-    </h2>
-
-    <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://prs-ombudsman-design-history-cacadb521663.herokuapp.com/">Design history</a></li>
-        <li>username: admin</li>
-        <li>password: p8ssw0rd</li>
-    </ul>
-
-    <h2 class="govuk-heading-m">
-      Team resources
-    </h2>
+    <h2 class="govuk-heading-m">Design assests</h2>
 
     <ul class="govuk-list govuk-list--bullet">
-        <li></li>
+      <li>
+        <a
+          href="https://prs-ombudsman-design-history-cacadb521663.herokuapp.com/"
+          >Design history</a
+        >
+      </li>
+      <li>username: admin</li>
+      <li>password: p8ssw0rd</li>
     </ul>
 
-    <h2 class="govuk-heading-m">
-      Prototype
-    </h2>
+    <h2 class="govuk-heading-m">Team resources</h2>
 
     <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/manage-prototype/">Manage</a></li>
-        <li><a href="/switch-branding?redirectTo=/">Switch to {{ "unbranded" if govBranded else "branded" }}</a></li>
+      <li></li>
     </ul>
 
+    <h2 class="govuk-heading-m">Prototype</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/manage-prototype/">Manage</a></li>
+      <li>
+        <a href="/switch-branding?redirectTo=/"
+          >Switch to {{ "unbranded" if govBranded else "branded" }}</a
+        >
+      </li>
+    </ul>
 
     {# {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %} #}
-
   </div>
 </div>
 

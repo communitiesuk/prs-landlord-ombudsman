@@ -16,7 +16,13 @@ router.use((req, res, next) => {
   }
 
   // Make the cookie value available to templates - convert string to boolean, default to true if undefined
-  res.locals.govBranded = req.cookies.govBranded === undefined ? true : req.cookies.govBranded === "true";
+  res.locals.govBranded =
+    req.cookies.govBranded === undefined
+      ? true
+      : req.cookies.govBranded === "true";
+
+  res.locals.chatbot =
+    req.cookies.chatbot === undefined ? true : req.cookies.chatbot === "true";
 
   next();
 });
