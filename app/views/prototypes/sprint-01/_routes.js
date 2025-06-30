@@ -47,13 +47,13 @@ router.post("/single/are-you-renting-in-england-or-wales", function (req, res) {
 
 router.post("/single/what-do-you-need-help-with", function (req, res) {
   if (req.session.data["need-help-with"] == "contractual") {
-    res.redirect("contractual");
+    res.redirect("problem-with-tenancy");
   } else if (req.session.data["need-help-with"] == "maintanence") {
     res.redirect("maintanence-and-repairs");
   }
 });
 
-router.post("/single/contractual", function (req, res) {
+router.post("/single/problem-with-tenancy", function (req, res) {
   res.redirect("landlord-legal-issues");
 });
 

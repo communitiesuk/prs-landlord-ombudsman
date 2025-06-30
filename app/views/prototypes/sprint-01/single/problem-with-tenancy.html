@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the problem with your tenancy? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "What is the problem with your tenancy?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+            {
+              value: "",
+              text: "An issue with landlord",
+              hint: {
+                text: "Includes unreasonable or threatening behaviour"
+              }
+            },
+            {
+              value: "",
+              text: "Risk of eviction",
+              hint: {
+                text: "Includes possession orders, notifications and reasons for eviction"
+              }
+            },
+            {
+              value: "",
+              text: "Rental deposit",
+              hint: {
+                text: "Includes protection, return at the end of a tenancy and deductions"
+              }
+            },
+            {
+              value: "",
+              text: "Tenancy fees",
+              hint: {
+                text: "Includes fees paid to letting agents or landlords"
+              }
+            },
+            {
+              value: "",
+              text: "Rental payments",
+              hint: {
+                text: "Includes requests to pay rent in advance, arrears, and rent rises"
+              }
+            },    
+            {
+              value: "",
+              text: "Pets in the property",
+              hint: {
+                text: "Includes how to ask for a pet, what your landlord will need to know and how any pet damage will be paid for"
+              }
+            }
+          ]
+        }) }}
+
+              {{ govukButton({
+                text: "Continue"
+              }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
