@@ -19,16 +19,11 @@ content %}
     </p>
 
     {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-    {{ govukWarningText({ html: "If you are about to lose your home, contact
-    <a href="https://england.shelter.org.uk/get_help">Shelter</a>,
-    <a href="https://www.citizensadvice.org.uk/about-us/contact-us/"
-      >Citizens Advice</a
-    >
-    or your
-    <a href="https://www.lawcentres.org.uk/list-of-law-centres"
-      >local Law Centre</a
-    >
-    for help.", iconFallbackText: "Warning" }) }}
+
+{{ govukWarningText({
+  html: "If you are about to lose your home, contact <a href='https://england.shelter.org.uk/get_help'>Shelter</a>, <a href='https://www.citizensadvice.org.uk/about-us/contact-us/'>Citizens Advice</a> or your <a href='https://www.lawcentres.org.uk/list-of-law-centres'>local Law Centre</a> for help. ",
+  iconFallbackText: "Warning"
+}) }}
 
     <!-- <ul class="govuk-list govuk-list--bullet">
         <li>do something</li>
