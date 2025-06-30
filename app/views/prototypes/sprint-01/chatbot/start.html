@@ -1,9 +1,10 @@
 {% extends "layouts/main.html" %} {% block pageTitle %} Start page template – {{
 serviceName }} – GOV.UK Prototype Kit {% endblock %} {% block header %}
 <!-- Blank header with no service name for the start page -->
-{{ govukHeader() }} {% endblock %} {% block beforeContent %} {{
-govukBreadcrumbs({ items: [ { text: "Home", href: "#" }, { text: "Section",
-href: "#" }, { text: "Subsection" } ] }) }} {% endblock %} {% block content %}
+{% if govBranded %} {{ govukHeader() }} {% endif %} {% endblock %} {% block
+beforeContent %} {{ govukBreadcrumbs({ items: [ { text: "Home", href: "#" }, {
+text: "Section", href: "#" }, { text: "Subsection" } ] }) }} {% endblock %} {%
+block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
