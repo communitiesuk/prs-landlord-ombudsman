@@ -1,5 +1,5 @@
 {
-  "serviceName": "Private Rental Sector Ombudsman Service",
+  "serviceName": "Resolve a Private Rental Dispute",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true
