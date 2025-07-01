@@ -1,0 +1,6 @@
+{
+  "nunjucksTemplate.preserveEmptyLine": 3,
+  "files.associations": {
+    "*.html": "njk"
+  }
+}

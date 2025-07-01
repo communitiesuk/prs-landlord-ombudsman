@@ -1,0 +1,72 @@
+.alb-header {
+  @extend .govuk-width-container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: govuk-colour("white");
+  padding: 2rem 0;
+}
+
+.alb-navigation {
+  @extend .govuk-body-s;
+  display: flex;
+}
+.alb-navigation__item {
+  text-decoration: none;
+  color: $govuk-link-hover-colour;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &:visited {
+    color: $govuk-link-hover-colour;
+  }
+
+  &:hover {
+    background-color: $govuk-link-hover-colour;
+    color: govuk-colour("white");
+  }
+}
+
+.alb-footer {
+  padding: 2rem 0;
+  background-color: #f4f8fb;
+}
+
+.alb-footer-navigation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alb-footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.alb-footer-list__item {
+  a {
+    text-decoration: none;
+    color: $govuk-secondary-text-colour;
+
+    &:visited {
+      color: $govuk-secondary-text-colour;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.alb-footer-copyright {
+  @extend .govuk-body-s;
+  color: $govuk-secondary-text-colour;
+}
+
+.alb-button {
+  width: 100%;
+  background-color: $govuk-link-hover-colour;
+
+  &:hover {
+    background-color: darken($govuk-link-hover-colour, 10%);
+  }
+}

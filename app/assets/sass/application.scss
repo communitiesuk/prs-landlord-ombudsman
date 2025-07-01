@@ -1,12 +1,14 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra styles here
 
+@import "alb";
+
 .call-to-action {
-    background-color: #f3f2f1;
-    margin: 2em 0;
-    padding: 2em;
+  background-color: #f3f2f1;
+  margin: 2em 0;
+  padding: 2em;
 }
