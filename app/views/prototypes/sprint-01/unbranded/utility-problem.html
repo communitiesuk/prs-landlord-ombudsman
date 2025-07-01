@@ -1,0 +1,66 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Gas, electricity, boiler, heating or hot water supply is not working – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "utilityProblem",
+          fieldset: {
+            legend: {
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          formGroup: {
+            beforeInputs: {
+              html: "<p>Your landlord must ensure that the boiler and utilties are kept in good working order and supplied safely.</p><div class='govuk-hint'>Select one option</div>"
+            }
+          },
+          items: [
+            {
+              value: "hot-water",
+              text: "Hot water supply"
+            },
+            {
+              value: "boiler",
+              text: "Boiler"
+            },
+            {
+              value: "electricity",
+              text: "Electricity or electric wiring"
+            },
+            {
+              value: "gas",
+              text: "Gas pipes"
+            },
+            {
+              value: "heaters",
+              text: "Heaters or radiators"
+            }  
+          ]
+        }) }}
+              {{ govukButton({
+                text: "Continue",
+                classes: "alb-button"
+              }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
