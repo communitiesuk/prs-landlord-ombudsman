@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  What do you need help with? – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,50 +16,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                What do you need help with?
-              </h1>
-            </legend>
-            <!-- <div id="signIn-hint" class="govuk-hint">
-              You’ll need an account to prove your identity and complete your Self Assessment
-            </div> -->
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="con" name="need-help-with" type="radio" value="contractual" aria-describedby="signIn-item-hint">
-                <label class="govuk-label govuk-radios__label" for="con">
-                  I have a contractual related issue
-                </label>
-                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                  Landlord legal issues, Eviction, Deposits, Tenant fees, Rent or Pets 
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="main" name="need-help-with" type="radio" value="maintanence" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="main">
-                  I have a maintenance or repair related issue
-                </label>
-                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Internal structural repairs, External structural repairs, Damp and mould, Fire related, Faulty or missing appliances, Pest infestation, Access issues 
-                </div>
-              </div>
-              <!-- <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
-                <label class="govuk-label govuk-radios__label" for="signIn-2">
-                  I have a behavioural related issue
-                </label>
-                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                  Cutting off utilities, Violence or intimidating language from landlord, Harassment from landlord, Character discrimination, Rental discrimination, Landlord opening or withholding post, Entering property without permission, Poor communication, Unfounded or illicit demands or Noise complaints from other tenants  
-                </div>
-              </div> -->
-            </div>
-          </fieldset>
-        </div>
-          <button class="govuk-button" data-module="govuk-button" name="" value="">
-            Continue
-          </button>
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "need-help-with",
+          fieldset: {
+            legend: {
+              text: "What do you need help with?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+            {
+              value: "contractual",
+              text: "I have a tenancy (including rent) issue",
+              hint: {
+                text: "Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet."
+              }
+            },
+            {
+              value: "maintanence",
+              text: "I have a maintenance or repair related issue",
+              hint: {
+                text: "Includes gas, electricity, boiler or heating issues, damp or mould pest infestation, and plumbing or leaks."
+              }
+            }
+          ]
+        }) }}
+              {{ govukButton({
+                text: "Continue"
+              }) }}
       </form>
     </div>
   </div>

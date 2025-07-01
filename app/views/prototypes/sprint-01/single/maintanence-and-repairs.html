@@ -19,7 +19,7 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "signIn",
+          name: "maintanenceRepairs",
           fieldset: {
             legend: {
               text: "What is the problem with your housing?",
@@ -32,49 +32,49 @@
           },
           items: [
             {
-              value: "",
+              value: "gas-electricity",
               text: "Gas, electricity, boiler, heating or hot water supply is not working",
               hint: {
                 text: "Includes heating that is not working well"
               }
             },
             {
-              value: "",
+              value: "outside-doors-walls",
               text: "Outside doors, walls, roof or windows are dangerous or need repair",
               hint: {
                 text: "Includes uneven flooring, broken stairs"
               }
             },
             {
-              value: "",
+              value: "pests",
               text: "Mice or other pests are causing a problem",
               hint: {
                 text: ""
               }
             },
             {
-              value: "",
+              value: "damp-or-mould",
               text: "Damp or mould is growing inside",
               hint: {
                 text: ""
               }
             },
             {
-              value: "",
+              value: "faulty-smoke-dectectors",
               text: "Faulty smoke detectors, fire doors or obstructions causing a fire hazard ",
               hint: {
                 text: ""
               }
             },    
             {
-              value: "",
+              value: "appliances",
               text: "Faulty or missing appliance",
               hint: {
                 text: "Includes washing machines, fridges, cookers"
               }
             },  
             {
-              value: "",
+              value: "plumbing",
               text: " Plumbing and leaks (inside or outside)",
               hint: {
                 text: "Includes toilets, pipes, drains, sinks, showers and baths"

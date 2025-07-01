@@ -19,7 +19,7 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "need-help-with",
+          name: "needHelpWith",
           fieldset: {
             legend: {
               text: "What do you need help with?",
@@ -32,7 +32,7 @@
           },
           items: [
             {
-              value: "contractual",
+              value: "tenancy",
               text: "I have a tenancy (including rent) issue",
               hint: {
                 text: "Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet."
