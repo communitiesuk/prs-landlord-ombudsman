@@ -2,15 +2,17 @@
 
 {% block header %}
 <header class="alb-header">
-  <a href="/">
-    <img src="/public/images/alb_logo.png" alt="ALB logo" class="alb-logo" loading="eager" height="62" width="156">
-  </a>
-  <nav class="alb-navigation">
-    <a class="alb-navigation__item" href="/">Home</a>
-    <a class="alb-navigation__item" href="/">About Us</a>
-    <a class="alb-navigation__item" href="/">News</a>
-    <a class="alb-navigation__item" href="/">Contact Us</a>
-  </nav>
+  <div class="alb-header-container">
+    <a href="/">
+      <img src="/public/images/alb_logo.svg" alt="ALB logo" class="alb-logo" loading="eager" height="62" width="156">
+    </a>
+    <nav class="alb-navigation">
+      <a class="alb-navigation__item" href="/">Home</a>
+      <a class="alb-navigation__item" href="/">About Us</a>
+      <a class="alb-navigation__item" href="/">News</a>
+      <a class="alb-navigation__item" href="/">Contact Us</a>
+    </nav>
+  </div>
 </header>
 {% endblock %}
 
@@ -18,27 +20,138 @@
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">How Can We Help You?</h1>
+      <h2 class="govuk-heading-l">How can we help you?</h2>
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <p class="govuk-body-m">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+      <h3 class="govuk-heading-m">Renters information</h3>
+      <div class="alb-card">
+        <ul class="alb-list">
+          <li>When to get help from the PRS Ombudsman</li>
+          <li>How to complain to your landlord</li>
+          <li>Online complaint form</li>
+          <li>Advisors and advocates</li>
+        </ul>
+      </div>
     </div>
     <div class="govuk-grid-column-one-half">
-      <p class="govuk-body-m">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+      <h3 class="govuk-heading-m">Landlords information</h3>
+      <div class="alb-card alb-card--dark">
+        <ul class="alb-list">
+          <li>When to get help from the PRS Ombudsman</li>
+          <li>The PRS Ombudsman Scheme</li>
+          <li>Webinars and training</li>
+          <li>Centre for Learning</li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
       {{ govukButton({
-        text: "A CTA",
+        text: "Get Help",
         href: "",
         isStartButton: true,
-        classes: "alb-button"
+        classes: "alb-button alb-button--full govuk-!-margin-bottom-0"
       }) }}
     </div>
   </div>  
+  
+  <div class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"></div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">News</h2>
+      <article class="alb-news-item">
+        <a href="/">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</h3>
+        </a>
+        <time class="govuk-body-xs govuk-!-margin-bottom-0" datetime="2025-01-01">19 June 2025</time>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</p>
+      </article>
+      <article class="alb-news-item">
+        <a href="/">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</h3>
+        </a>
+        <time class="govuk-body-xs govuk-!-margin-bottom-0" datetime="2025-01-01">19 June 2025</time>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</p>
+      </article>
+      <article class="alb-news-item">
+        <a href="/">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</h3>
+        </a>
+        <time class="govuk-body-xs govuk-!-margin-bottom-0" datetime="2025-01-01">19 June 2025</time>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Housing Ombudsman targets areas landlords can ‘renew and improve’ relationships with leaseholders</p>
+      </article>
+      {{ govukButton({
+        text: "Read More",
+        href: "#",
+        classes: "alb-button govuk-!-margin-bottom-0"
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"></div>
+
+  <h2 class="govuk-heading-l">Key topics</h2>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <article class="alb-info-card">
+        <img src="/public/images/card_hero.jpg" alt="Card Title" class="alb-info-card__image" />
+        <h3 class="govuk-heading-m">Damp and mould</h3>
+        <p class="govuk-body-s">Damp and mould is a reoccurring issue that continually arises in our case work.</p>
+        <p class="govuk-body-s">Residents and landlords can use this page to find out more about this key topic including guidance, spotlight reports, and training options for landlords.</p>
+        {{ govukButton({
+          text: "Read More",
+          href: "#",
+          classes: "alb-button govuk-!-margin-bottom-0"
+        }) }}
+      </article>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <article class="alb-info-card">
+        <img src="/public/images/card_hero.jpg" alt="Card Title" class="alb-info-card__image" />
+        <h3 class="govuk-heading-m">Repairs</h3>
+        <p class="govuk-body-s">Complaints about repairs and property condition are the most common topic that we see in our casework.</p>
+        <p class="govuk-body-s">Explore our reports, case studies and guidance to gain an understanding of how to navigate repair concerns.</p>
+        {{ govukButton({
+          text: "Read More",
+          href: "#",
+          classes: "alb-button govuk-!-margin-bottom-0"
+        }) }}
+      </article>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <article class="alb-info-card">
+        <img src="/public/images/card_hero.jpg" alt="Card Title" class="alb-info-card__image" />
+        <h3 class="govuk-heading-m">Noise complaints</h3>
+        <p class="govuk-body-s">Noise complaints are a common issue that residents and landlords face in their daily lives.</p>
+        <p class="govuk-body-s">Explore guidance, spotlight reports, and training options for landlords and residents to help you navigate through this key topic.</p>
+        {{ govukButton({
+          text: "Read More",
+          href: "#",
+          classes: "alb-button govuk-!-margin-bottom-0"
+        }) }}
+      </article>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <article class="alb-info-card">
+        <img src="/public/images/card_hero.jpg" alt="Card Title" class="alb-info-card__image" />
+        <h3 class="govuk-heading-m">Pests</h3>
+        <p class="govuk-body-s">Pest infestation can be extremely distressing for residents and of significant difficulty for landlords to resolve.</p>
+        <p class="govuk-body-s">Discover guidance and case studies to help you understand this key topic.</p>
+        {{ govukButton({
+          text: "Read More",
+          href: "#",
+          classes: "alb-button govuk-!-margin-bottom-0"
+        }) }}
+      </article>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
