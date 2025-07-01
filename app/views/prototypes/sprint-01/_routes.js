@@ -8,13 +8,16 @@ const router = govukPrototypeKit.requests.setupRouter();
 
 // Multiple
 
-router.post("/multiple/are-you-renting-in-england-or-wales", function (req, res) {
-  if (req.session.data["rentingEnglandOrWales"] == "yes") {
-    res.redirect("what-do-you-need-help-with");
-  } else if (req.session.data["rentingEnglandOrWales"] == "no") {
-    res.redirect("cannot-use-service");
+router.post(
+  "/multiple/are-you-renting-in-england-or-wales",
+  function (req, res) {
+    if (req.session.data["rentingEnglandOrWales"] == "yes") {
+      res.redirect("what-do-you-need-help-with");
+    } else if (req.session.data["rentingEnglandOrWales"] == "no") {
+      res.redirect("cannot-use-service");
+    }
   }
-});
+);
 
 router.post("/multiple/what-do-you-need-help-with", function (req, res) {
   if (req.session.data["needHelpWith"] == "tenancy") {
@@ -71,6 +74,49 @@ router.post("/single/landlord-legal-issues", function (req, res) {
 });
 
 router.post("/single/landlord-legal-issues", function (req, res) {
+  res.redirect("triage-results");
+});
+
+// Unbranded
+
+// Single
+
+router.post(
+  "/unbranded/are-you-renting-in-england-or-wales",
+  function (req, res) {
+    if (req.session.data["rentingEnglandOrWales"] == "yes") {
+      res.redirect("what-do-you-need-help-with");
+    } else if (req.session.data["rentingEnglandOrWales"] == "no") {
+      res.redirect("cannot-use-service");
+    }
+  }
+);
+
+router.post("/unbranded/what-do-you-need-help-with", function (req, res) {
+  if (req.session.data["needHelpWith"] == "tenancy") {
+    res.redirect("problem-with-tenancy");
+  } else if (req.session.data["needHelpWith"] == "maintanence") {
+    res.redirect("maintanence-and-repairs");
+  }
+});
+
+router.post("/unbranded/problem-with-tenancy", function (req, res) {
+  res.redirect("landlord-legal-issues");
+});
+
+router.post("/unbranded/maintanence-and-repairs", function (req, res) {
+  res.redirect("utility-problem");
+});
+
+router.post("/unbranded/utility-problem", function (req, res) {
+  res.redirect("next-steps");
+});
+
+router.post("/unbranded/landlord-legal-issues", function (req, res) {
+  res.redirect("triage-results");
+});
+
+router.post("/unbranded/landlord-legal-issues", function (req, res) {
   res.redirect("triage-results");
 });
 
