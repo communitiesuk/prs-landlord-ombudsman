@@ -19,7 +19,7 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "need-help-with",
+          name: "needHelpWith",
           fieldset: {
             legend: {
               text: "What do you need help with?",
@@ -32,17 +32,17 @@
           },
           items: [
             {
-              value: "contractual",
-              text: "I have a contractual related issue",
+              value: "tenancy",
+              text: "I have a tenancy (including rent) issue",
               hint: {
-                text: "Landlord legal issues, Eviction, Deposits, Tenant fees, Rent or Pets"
+                text: "Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet."
               }
             },
             {
               value: "maintanence",
               text: "I have a maintenance or repair related issue",
               hint: {
-                text: "Internal structural repairs, External structural repairs, Damp and mould, Fire related, Faulty or missing appliances, Pest infestation, Access issues"
+                text: "Includes gas, electricity, boiler or heating issues, damp or mould pest infestation, and plumbing or leaks."
               }
             }
           ]

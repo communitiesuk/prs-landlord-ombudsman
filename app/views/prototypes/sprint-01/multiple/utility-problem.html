@@ -16,9 +16,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form class="form" method="post">
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-        {{ govukRadios({
+        {{ govukCheckboxes({
           name: "utilityProblem",
           fieldset: {
             legend: {
@@ -29,28 +29,28 @@
           },
           formGroup: {
             beforeInputs: {
-              html: "<p>Your landlord must ensure that the boiler and utilties are kept in good working order and supplied safely.</p><div class='govuk-hint'>Select one option</div>"
+              html: "<p>Your landlord must ensure that the boiler and utilties are kept in good working order and supplied safely.</p><div class='govuk-hint'>Select all that apply</div>"
             }
           },
           items: [
             {
-              value: "hot-water",
+              value: "england",
               text: "Hot water supply"
             },
             {
-              value: "boiler",
+              value: "scotland",
               text: "Boiler"
             },
             {
-              value: "electricity",
+              value: "wales",
               text: "Electricity or electric wiring"
             },
             {
-              value: "gas",
+              value: "northern-ireland",
               text: "Gas pipes"
             },
             {
-              value: "heaters",
+              value: "northern-ireland",
               text: "Heaters or radiators"
             }  
           ]
