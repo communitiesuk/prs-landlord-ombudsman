@@ -1,0 +1,36 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }} – Sorry, you're not able to use this service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Sorry, you're not able to use this service
+      </h1>
+
+      <p>
+        It is only for people renting in England and Wales at the moment.
+      </p>
+
+      <p>It’s only for people who rent privately at the moment. See information for <a href="https://www.gov.uk/housing-association-homes/complaints"> housing association</a> and <a href="https://www.gov.uk/council-housing/repairs-and-maintenance">council housing</a> tenants on GOV.UK.</p>
+
+      <!-- <p>
+        Read more <a href="/path/of/page">about this topic</a>.
+      </p> -->
+
+    </div>
+  </div>
+
+{% endblock %}

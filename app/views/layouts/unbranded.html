@@ -1,0 +1,67 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+   {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<header class="alb-header">
+  <div class="alb-header-container">
+    <a href="/">
+      <img src="/public/images/alb_logo.svg" alt="ALB logo" class="alb-logo" loading="eager" height="62" width="156">
+    </a>
+    <nav class="alb-navigation">
+      <a class="alb-navigation__item" href="/">Home</a>
+      <a class="alb-navigation__item" href="/">About Us</a>
+      <a class="alb-navigation__item" href="/">News</a>
+      <a class="alb-navigation__item" href="/">Contact Us</a>
+    </nav>
+  </div>
+</header>
+{% endblock %}
+
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Unbranded page template
+  </h1>
+  <p class="govuk-body-l">
+    This page doesn't use New Transport or display the GOV.UK header and footer.
+  </p>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="alb-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <a href="/">
+          <img src="/public/images/alb_logo.svg" alt="ALB logo" class="alb-logo" loading="eager" height="62" width="156">
+        </a>
+      </div>
+      <div class="govuk-grid-column-two-thirds alb-footer-navigation">
+        <ul class="alb-footer-list">
+          <li class="alb-footer-list__item"><a href="/">About Us</a></li>
+          <li class="alb-footer-list__item"><a href="/">News</a></li>
+          <li class="alb-footer-list__item"><a href="/">Contact Us</a></li>
+          <li class="alb-footer-list__item"><a href="/">Accessibility</a></li>
+        </ul>
+
+        <ul class="alb-footer-list">
+          <li class="alb-footer-list__item"><a href="/">Privacy Policy</a></li>
+          <li class="alb-footer-list__item"><a href="/">Terms and Conditions</a></li>
+          <li class="alb-footer-list__item"><a href="/">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <p class="alb-footer-copyright">© 2025 All rights reserved</p>
+      </div>
+  </div>
+  </div>
+</footer>
+<footer>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+   What to do now – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        What to do now
+      </h1>
+
+      <p>{{ data | dump }}</p>
+
+      <div class="call-to-action">
+        <h2 class="govuk-heading-m">Know your rights and your landlord’s responsibilities</h2>   
+        <p>Check whether your landlord or letting agent is responsible for the problem you told us about in 
+          <a href="rights-responsibilities">your rights and your landlord’s responsibilities</a>.
+        </p>
+      </div>
+
+      <div class="call-to-action">
+        <h2 class="govuk-heading-m">Future steps and useful resources</h2>   
+        <p><a href="future-resources">Get more information on future steps</a> to help address the problem.</p>
+      </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

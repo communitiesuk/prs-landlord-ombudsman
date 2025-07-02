@@ -1,0 +1,58 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  What do you need help with? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "needHelpWith",
+          fieldset: {
+            legend: {
+              text: "What do you need help with?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+            {
+              value: "tenancy",
+              text: "I have a tenancy (including rent) issue",
+              hint: {
+                text: "Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet."
+              }
+            },
+            {
+              value: "maintanence",
+              text: "I have a maintenance or repair related issue",
+              hint: {
+                text: "Includes gas, electricity, boiler or heating issues, damp or mould pest infestation, and plumbing or leaks."
+              }
+            }
+          ]
+        }) }}
+              {{ govukButton({
+                text: "Continue",
+                classes: "alb-button"
+              }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
