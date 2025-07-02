@@ -20,6 +20,20 @@
         What to do now
       </h1>
 
+      <p>{{ data | dump }}</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+      {% for maintanenceRepair in data['maintanenceRepairs'] %}
+        <li><a href="#">{{ maintanenceRepair }}</a></li>
+      {% endfor %}
+      </ul>
+
+      <ul class="govuk-list govuk-list--bullet">
+      {% for utilityProblem in data['utilityProblems'] %}
+        <li><a href="#">{{ utilityProblem }}</a></li>
+      {% endfor %}
+      </ul>
+
       <div class="call-to-action">
         <h2 class="govuk-heading-m">Know your rights and your landlord’s responsibilities</h2>   
         <p>Check whether your landlord or letting agent is responsible for the problem you told us about in 

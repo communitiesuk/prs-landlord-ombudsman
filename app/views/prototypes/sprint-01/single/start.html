@@ -12,7 +12,7 @@ content %}
 
     <p>Types of problem could include maintenance or repairs to your home or issues with your tenancy agreement.</p>
 
-    <h2 class="govuk-heading-l">What’s on offer</h2>
+    <h2 class="govuk-heading-l">Next steps</h2>
 
     <p>You’ll get advice and guidance about what to do next and which organisations can help, including The Property Ombudsman, Shelter and Citizens’ Advice.</p>
 
@@ -22,10 +22,10 @@ content %}
 
     {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-{{ govukWarningText({
-  html: "If you are about to lose your home, contact <a href='https://england.shelter.org.uk/get_help'>Shelter</a>, <a href='https://www.citizensadvice.org.uk/about-us/contact-us/'>Citizens Advice</a> or your <a href='https://www.lawcentres.org.uk/list-of-law-centres'>local Law Centre</a> for help. ",
-  iconFallbackText: "Warning"
-}) }}
+    {{ govukWarningText({
+      html: "If you are about to lose your home, contact <a href='https://england.shelter.org.uk/get_help'>Shelter</a>, <a href='https://www.citizensadvice.org.uk/about-us/contact-us/'>Citizens Advice</a> or your <a href='https://www.lawcentres.org.uk/list-of-law-centres'>local Law Centre</a> for help. ",
+      iconFallbackText: "Warning"
+    }) }}
 
     <!-- <ul class="govuk-list govuk-list--bullet">
         <li>do something</li>

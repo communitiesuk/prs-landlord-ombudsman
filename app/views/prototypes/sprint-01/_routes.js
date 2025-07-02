@@ -66,13 +66,6 @@ router.post("/single/utility-problem", function (req, res) {
   res.redirect("next-steps");
 });
 
-router.post("/single/landlord-legal-issues", function (req, res) {
-  res.redirect("triage-results");
-});
-
-router.post("/single/landlord-legal-issues", function (req, res) {
-  res.redirect("triage-results");
-});
 
 // Chatbot
 

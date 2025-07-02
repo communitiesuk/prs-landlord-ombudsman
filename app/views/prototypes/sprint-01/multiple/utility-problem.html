@@ -19,7 +19,7 @@
         {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
         {{ govukCheckboxes({
-          name: "utilityProblem",
+          name: "utilityProblems",
           fieldset: {
             legend: {
               text: "Gas, electricity, boiler, heating or hot water supply is not working",
@@ -34,23 +34,23 @@
           },
           items: [
             {
-              value: "england",
+              value: "hot-water",
               text: "Hot water supply"
             },
             {
-              value: "scotland",
+              value: "boiler",
               text: "Boiler"
             },
             {
-              value: "wales",
+              value: "electricity",
               text: "Electricity or electric wiring"
             },
             {
-              value: "northern-ireland",
+              value: "gas",
               text: "Gas pipes"
             },
             {
-              value: "northern-ireland",
+              value: "heaters",
               text: "Heaters or radiators"
             }  
           ]
