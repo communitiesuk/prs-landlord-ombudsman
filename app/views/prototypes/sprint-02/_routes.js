@@ -23,8 +23,16 @@ router.post("/llm/have-you-spoken-to-anyone", function (req, res) {
   if (req.session.data["haveYouSpokenToAnyone"] == "no") {
     res.redirect("more-information");
   } else if(req.session.data["haveYouSpokenToAnyone"] === 'landlord' || req.session.data["haveYouSpokenToAnyone"] === 'localAuthority' || req.session.data["haveYouSpokenToAnyone"] === 'charity') {
-    res.redirect("contact-details");
+    res.redirect("points-of-touch");
   }
+});
+
+router.post("/llm/points-of-touch", function (req, res) {
+  res.redirect("more-information");
+});
+
+router.post("/llm/more-information", function (req, res) {
+  res.redirect("resolution");
 });
 
 module.exports = router;
