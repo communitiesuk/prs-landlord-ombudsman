@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the problem with your housing? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          name: "maintanenceRepairs",
+          fieldset: {
+            legend: {
+              text: "What is the problem with your housing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select as many options as you need"
+          },
+          items: [
+            {
+              value: "gas-electricity",
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
+              hint: {
+                text: "Includes heating that is not working well"
+              }
+            },
+            {
+              value: "outside-doors-walls",
+              text: "Outside doors, walls, roof or windows are dangerous or need repair",
+              hint: {
+                text: "Includes uneven flooring, broken stairs"
+              }
+            },
+            {
+              value: "pests",
+              text: "Mice or other pests are causing a problem",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "damp-or-mould",
+              text: "Damp or mould is growing inside",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "faulty-smoke-dectectors",
+              text: "Faulty smoke detectors, fire doors or obstructions causing a fire hazard ",
+              hint: {
+                text: ""
+              }
+            },    
+            {
+              value: "appliances",
+              text: "Faulty or missing appliance",
+              hint: {
+                text: "Includes washing machines, fridges, cookers"
+              }
+            },  
+            {
+              value: "plumbing",
+              text: " Plumbing and leaks (inside or outside)",
+              hint: {
+                text: "Includes toilets, pipes, drains, sinks, showers and baths"
+              }
+            }
+          ]
+        }) }}
+
+              {{ govukButton({
+                text: "Continue"
+              }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
