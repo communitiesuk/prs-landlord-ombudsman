@@ -15,8 +15,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-  <h1 class="govuk-heading-xl">Your next steps</h1>
-
   <div id="app"></div>
 
   </div>
@@ -32,6 +30,11 @@
   function Answer() {
     const [answer, setAnswer] = React.useState('');
     const [error, setError] = React.useState(null);
+
+    // Create the dangerouslySetInnerHTML object to avoid Nunjucks conflicts
+    const createMarkup = (html) => {
+      return { __html: html };
+    };
 
     React.useEffect(() => {
       const dataScript = document.getElementById('data-script');
@@ -98,33 +101,36 @@
             throw new Error('Failed to fetch answer from OpenAI.');
           }
           const data = await res.json();
-          // The answer is now returned as HTML in data.choices[0].message.content
-          console.log(data.choices?.[0]?.message?.content);
-          setAnswer(data.choices?.[0]?.message?.content || '');
+          let htmlContent = data.choices?.[0]?.message?.content || '';
+          
+          // Remove markdown code block wrappers if present
+          htmlContent = htmlContent.replace(/^```html\s*\n?/, '').replace(/\n?```\s*$/, '');
+          htmlContent = htmlContent.replace(/^```\s*\n?/, '').replace(/\n?```\s*$/, '');
+          
+          console.log('Processed HTML:', htmlContent);
+          setAnswer(htmlContent);
         })
         .catch(err => {
           setError('Sorry, there was an error loading the answer.');
-          // Optionally log error
-          // console.error(err);
         });
 
       return () => controller.abort();
     }, []);
 
     return (
-      <div>
+      <>
         {error ? (
           <div className="govuk-body">
             <span>{error}</span>
           </div>
         ) : answer ? (
-          answer
+          <div dangerouslySetInnerHTML={createMarkup(answer)} />
         ) : (
           <div className="govuk-body">
-            <span>Loading...</span>
+            <span>Reviewing your answers and generating advice...</span>
           </div>
         )}
-      </div>
+      </>
     );
   }
 
