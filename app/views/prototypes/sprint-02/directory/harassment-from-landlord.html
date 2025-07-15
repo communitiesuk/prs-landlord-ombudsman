@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Dealing with anti-social behaviour",
+      href: "anti-social-behaviour"
+    },
+    {
+      text: "Harassment from landlord",
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Harassment from landlord
+      </h1>
+
+      <p class="govuk-body-l">Harassment includes any action by a landlord that is classed as likely to interfere with a tenant's peace and comfort in their rental property.</p>
+
+        <p class="govuk-body">It’s a criminal offence for a landlord (or their agent) to make a tenant:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>leave their tenancy early </li>
+          <li>surrender or give up their tenancy rights </li>
+        </ul>
+
+      <p>The landlord’s agent could be a letting agent or any third party instructed by the landlord.</p>
+
+        <p class="govuk-body">Harassment could include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>intimidating behaviour or threats</li>
+          <li>tenant discrimination. For example, racial or LGBT discrimination </li>
+          <li>requesting money that is not owed </li>
+          <li>trying to force the tenant out before the end of their tenancy agreement without having court authority to do so or a warrant for possession </li>
+          <li>entering the tenanted property without the tenant’s agreement </li>
+          <li>removing the tenant’s belongings without authority</li>
+          <li>cutting off essential supplies, like water or electricity</li>
+          <li>changing the locks without authority </li>
+        </ul>
+
+      <p>For more help and details about your rights as a tenant who is suffering with landlord harassment, visit <a href="https://england.shelter.org.uk/housing_advice/eviction/harassment_by_a_private_landlord">the Shelter website</a>.</p>
+    </div>
+  </div>
+
+{% endblock %}

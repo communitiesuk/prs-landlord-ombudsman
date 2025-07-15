@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Help for tenants",
+      href: "tenants"
+    },
+    {
+      text: "Eviction due to rent arrears",
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Eviction due to rent arrears 
+      </h1>
+
+      <p class="govuk-body-l">If you’ve been threatened with eviction for not paying your rent as a private tenant, you need to speak to your landlord about your circumstances.</p>
+
+      <p>A notice of eviction from your landlord is the first legal step towards eviction.</p>
+
+      <p>Your landlord still has to apply to court.</p>
+
+      <p>If you can sort out your money or benefit problems, they may not take court action.</p>
+
+      <p>Anyone with a notice can get free legal advice and help at court.</p>
+
+      <p>You could also get legal aid help if you're on benefits or a low income.</p>
+
+      <p class="govuk-body">You could:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>get advice by phone or face to face</li>
+          <li>be referred for specialist debt or money advice</li>
+        </ul>
+
+      <p>Visit the <a href="https://find-legal-advice.justice.gov.uk/">Ministry of Justice website</a> to find free legal help in your area.</p>
+
+    </div>
+  </div>
+
+{% endblock %}
