@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Tenants",
+      href: "#"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Tenants</h1>
+          <p class="govuk-body-l">Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet.</p>
+  </div>
+</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!-- <div class="gem-c-cards">
+          <ul class="gem-c-cards__list gem-c-cards__list--one-column">
+              <li class="gem-c-cards__list-item">
+                <div class="gem-c-cards__list-item-wrapper">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s">
+                    <a class="govuk-link gem-c-cards__link gem-c-force-print-link-styles" data-ga4-link="#" href="#">Tenants</a>
+                  </h3><p class="govuk-body gem-c-cards__description">Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet.</p>
+                </div>
+              </li>
+              <li class="gem-c-cards__list-item">
+                <div class="gem-c-cards__list-item-wrapper">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s">
+                    <a class="govuk-link gem-c-cards__link gem-c-force-print-link-styles" data-ga4-link="#" href="#">Landlords</a>
+                  </h3><p class="govuk-body gem-c-cards__description">Includes eviction, deposits, arrears, tenancy fees, rent increases or keeping a pet.</p>
+                </div>
+              </li>
+              <li class="gem-c-cards__list-item">
+                <div class="gem-c-cards__list-item-wrapper">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s">
+                    <a class="govuk-link gem-c-cards__link gem-c-force-print-link-styles" data-ga4-link="#" href="#">Maintenance and repairs</a>
+                  </h3><p class="govuk-body gem-c-cards__description">Includes gas, electricity, boiler or heating issues, damp or mould pest infestation, and plumbing or leaks.</p>
+                </div>
+              </li>
+              <li class="gem-c-cards__list-item">
+                <div class="gem-c-cards__list-item-wrapper">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s">
+                    <a class="govuk-link gem-c-cards__link gem-c-force-print-link-styles" data-ga4-link="#" href="#">Anti-social behaviour</a>
+                  </h3><p class="govuk-body gem-c-cards__description">Includes violence or intimidating language, harassment, discrimination and noise complaints. </p>
+                </div>
+              </li>
+            </ul>
+      </div> -->
+
+      <h2 class="govuk-heading-m">Landlord legal issues</h2>
+
+      <ul class="govuk-list govuk-list--spaced">
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Unlicensed HMO</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Unlicensed landlord in an area with selective landlord licensing</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Illegal subletting</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Not enrolled in PRS database or redress scheme</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Prohibited from renting under terms of lease</a></li>
+</ul>
+
+<h2 class="govuk-heading-m">Eviction</h2>
+<ul class="govuk-list govuk-list--spaced">
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Improper notice</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Retaliatory evictions</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Threat of eviction as coercion</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Eviction due to rent arrears</a></li>
+</ul>
+
+<h2 class="govuk-heading-m">Deposits</h2>
+<ul class="govuk-list govuk-list--spaced">
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Unprotected deposit</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Unfair or excessive deposit amounts</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Excessive deductions from deposit</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Delays in returning deposit</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Holding deposit not returned</a></li>
+</ul>
+
+<h2 class="govuk-heading-m">Rent</h2>
+<ul class="govuk-list govuk-list--spaced">
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Unexpected or excessive increase</a></li>
+  <li><a href="#" class="govuk-link govuk-link--no-visited-state">Notification of increase at short notice</a></li>
+</ul>
+
+<h2 class="govuk-heading-m">Pets</h2>
+
+    </div>
+  </div>
+
+{% endblock %}

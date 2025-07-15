@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+   What to do now – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        What to do now
+      </h1>
+
+      <!-- <p>{{ data | dump }}</p> -->
+
+      <!-- <div class="call-to-action">
+        <h2 class="govuk-heading-m">Know your rights and your landlord’s responsibilities</h2>   
+        <p>Check whether your landlord or letting agent is responsible for the problem you told us about in 
+          <a href="rights-responsibilities">your rights and your landlord’s responsibilities</a>.
+        </p>
+      </div>
+
+      <div class="call-to-action">
+        <h2 class="govuk-heading-m">Future steps and useful resources</h2>   
+        <p><a href="future-resources">Get more information on future steps</a> to help address the problem.</p>
+      </div> -->
+
+      <p>Your landlord cannot evict you because you asked for repairs to be done.</p>
+
+      <p>Your landlord has to keep your home in a good condition and do repairs if you need them. They can’t make you leave your home just for asking for repairs to be done. Your landlord has to follow a proper eviction process if they want you to leave.</p>
+
+      <p>Find out more about this on the <a href="https://england.shelter.org.uk/housing_advice/repairs/revenge_eviction_if_you_ask_for_repairs?">Shelter website</a>.</p>
+
+      {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: {
+              text: "Gather evidence"
+            },
+            content: {
+              html: '
+              <p class="govuk-body">Part of resolving the dispute will involve gathering information about the problem, how it has affected you, and what has happened so far.</p>
+              <p>You should gather as much evidence as you can about the issue and how you’ve tried to resolve it. Take photos of damage, make notes of conversations and phone calls.</p>
+              <p></p>
+              '
+            }
+          },
+          {
+            heading: {
+              text: "Contact the housing team at your local council"
+            },
+            content: {
+              html: '<p class="govuk-body">The housing team at your local council  have an obligation to make sure that tenants are living in properties that are looked after by landlords, and kept in a reasonable state of repair.</p>
+              <p><a href="https://www.gov.uk/find-local-council?">Find your local council</a></p>
+              <p><a href="#">Find out more about contacting your council</a></p>
+              <!-- <p><a href="https://check-how-to-get-repairs-done-in-your-rented-home.form.service.justice.gov.uk/local-council-detail">Find out more about contacting your council</a></p> -->
+              <p>If you have contacted your local council and they have not responded or have not helped to fix the problem, you should contact them again.</p>
+              <p><a href="#">Find out more about contacting your local council again</a></p>
+              <!-- <p><a href="https://check-how-to-get-repairs-done-in-your-rented-home.form.service.justice.gov.uk/contact-council-again">Find out more about contacting your local council again</a></p> -->
+              <p>You can find out more about <a href="https://england.shelter.org.uk/housing_advice/repairs/legal_action_if_your_landlord_wont_do_repairs">what to do if your landlord won’t do repairs</a> on the Shelter website.</p>
+              '
+            }
+          },
+          {
+            heading: {
+              text: "Try working with a mediator"
+            },
+            content: {
+              html: '<p class="govuk-body">A mediator is someone trained to resolve disagreements. Talking to a mediator may help you sort things out with your landlord or letting agent, especially if you have tried other ways to fix the problem. If you do end up going to court, then you may need to show that you tried mediation first. <a href="https://www.gov.uk/guidance/a-guide-to-civil-mediation">A guide to civil mediation - GOV.UK</a></p>'
+            }
+          },
+          {
+            heading: {
+              text: "Consider court action "
+            },
+            content: {
+              html: '<p class="govuk-body"> You may consider taking your landlord or letting agent to court. The court could order your landlord to:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>do the repairs</li>
+                  <li>pay you compensation, for example if your health has been affected</li>
+                  <li>pay some or all of your legal costs</li>
+                </ul>
+              <p>Going to court can be expensive and can take a long time but it is an option if you have not been able to resolve the problem in another way and want to stay in your current home. You may want to talk to a solicitor or qualified legal professional before you start any legal action.</p>
+              <p>There is a process you need to follow to make a claim. <a href="https://check-how-to-get-repairs-done-in-your-rented-home.form.service.justice.gov.uk/legal-action-detail">Find out about taking legal action</a></p>'
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
