@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Help for private landlords",
+      href: "landlords"
+    },
+    {
+      text: "Protecting your tenant’s deposit in a government-approved scheme ",
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Protecting your tenant’s deposit in a government-approved scheme 
+      </h1>
+
+      <p class="govuk-body-l">You must place your tenants’ deposit in a tenancy deposit protection (TDP) scheme if you rent out your home on an <a href="https://www.gov.uk/tenancy-agreements-a-guide-for-landlords/tenancy-types">assured shorthold tenancy</a> that started after 6 April 2007.</p>
+
+      <p>If you receive a valuable item as a deposit instead of money (for example a car or watch), you do not have to put it in a TDP.</p>
+
+        <p class="govuk-body">These government-backed schemes ensure your tenants will get their deposit back if they:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>meet the terms of your tenancy agreement </li>
+          <li>do not damage the property</li>
+          <li>pay the rent and bills</li>
+        </ul>
+
+      <p>You (or your letting agent) must put your tenants’ deposit in the scheme within 30 days of getting it.</p>
+
+        <p class="govuk-body">You can use any of the following schemes if your property is in England or Wales:</p>
+        
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li><a href="https://www.depositprotection.com/">Deposit Protection Service </a></li>
+          <li><a href="https://www.mydeposits.co.uk/">MyDeposits</a></li>
+          <li><a href="https://www.mydeposits.co.uk/">Tenancy Deposit Scheme</a></li>
+        </ul>
+
+    <h2 class="govuk-heading-m">At the end of the tenancy</h2>
+
+      <p>The deposit must be returned to your tenants within 10 days of you both agreeing how much they’ll get back.</p>
+
+      <h3 class="govuk-heading-s">If you’re in a dispute with your tenants</h3>
+      
+      <p>The deposit is protected in the scheme until the issue is settled. </p>
+
+      <p>If you’re in an ‘insured’ scheme, you or the agent must give the deposit to the TDP scheme. They will hold it until the issue is settled. </p>
+
+    </div>
+  </div>
+
+{% endblock %}
