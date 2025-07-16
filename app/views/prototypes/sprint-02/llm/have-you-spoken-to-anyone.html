@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the problem with your housing? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "haveYouSpokenToAnyone",
+          fieldset: {
+            legend: {
+              text: "Have you spoken to anyone about this problem?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option if applicable"
+          },
+          items: [
+            {
+              value: "no",
+              text: "No"
+            },
+            {
+              value: "landlord",
+              text: "Landlord"
+            },
+            {
+              value: "localAuthority",
+              text: "Local authority"
+            },
+            {
+              value: "charity",
+              text: "Charity",
+              hint: {
+                text: "Includes Shelter, Citizens Advice, and other charities"
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

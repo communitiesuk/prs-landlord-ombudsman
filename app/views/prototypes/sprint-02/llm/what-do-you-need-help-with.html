@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the problem with your housing? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          name: "maintanenceRepairs",
+          fieldset: {
+            legend: {
+              text: "What is the problem with your housing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select as many options as you need"
+          },
+          items: [
+            {
+              value: "gas-electricity",
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
+              hint: {
+                text: "Includes heating that is not working well"
+              }
+            },
+            {
+              value: "outside-doors-walls",
+              text: "Outside doors, walls, roof or windows are dangerous or need repair",
+              hint: {
+                text: "Includes uneven flooring, broken stairs"
+              }
+            },
+            {
+              value: "pests",
+              text: "Mice or other pests are causing a problem",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "damp-or-mould",
+              text: "Damp or mould is growing inside",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "faulty-smoke-dectectors",
+              text: "Faulty smoke detectors, fire doors or obstructions causing a fire hazard ",
+              hint: {
+                text: ""
+              }
+            },    
+            {
+              value: "appliances",
+              text: "Faulty or missing appliance",
+              hint: {
+                text: "Includes washing machines, fridges, cookers"
+              }
+            },  
+            {
+              value: "plumbing",
+              text: " Plumbing and leaks (inside or outside)",
+              hint: {
+                text: "Includes toilets, pipes, drains, sinks, showers and baths"
+              }
+            },
+            {
+              value: "unlicensed-hmo",
+              text: "Unlicensed HMO"
+            },
+            {
+              value: "unlicensed-landlord-in-la-area-with-selective-landlord-licensing",
+              text: "Unlicensed landlord in LA area with selective landlord licensing"
+            },
+            {
+              value: "illegal-subletting",
+              text: "Illegal subletting"
+            },
+            {
+              value: "not-enrolled-in-tenancy-deposit-scheme",
+              text: "Not enrolled in Tenancy Deposit Scheme"
+            },
+            {
+              value: "prohibited-from-renting-under-terms-of-lease",
+              text: "Prohibited from renting under terms of lease"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
