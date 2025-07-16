@@ -29,6 +29,8 @@
       return { __html: html };
     };
 
+    const token = '{{ token }}';
+
     React.useEffect(() => {
       const dataScript = document.getElementById('data-script');
       const formData = JSON.parse(dataScript.textContent);
@@ -79,7 +81,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer TOKEN`,
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
           model: 'gpt-4o-mini',
