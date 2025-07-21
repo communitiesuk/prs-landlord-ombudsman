@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %} 
+
+{% block pageTitle %} Start page – {{serviceName }} {% endblock %} 
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %} 
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Get help with your privately rented home or flat</h1>
+
+    <p>If you are having problems with your privately rented house or flat you can use this service to find out what you can do next.</p>
+
+    <p>Types of problem could include maintenance or repairs to your home or issues with your tenancy agreement.</p>
+
+    <h2 class="govuk-heading-l">Next steps</h2>
+
+    <p>You’ll get advice and guidance about what to do next and which organisations can help, including The Property Ombudsman, Shelter and Citizens’ Advice.</p>
+
+    <p class="govuk-body govuk-!-font-weight-bold">This service is only available to private rental tenants in England.</p>
+
+    <p class="govuk-body govuk-!-font-weight-bold">If you rent via a council or housing association you can get help from the Housing Ombudsman.</p>
+
+    {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+    {{ govukWarningText({
+      html: "If you are about to lose your home, contact <a href='https://england.shelter.org.uk/get_help'>Shelter</a>, <a href='https://www.citizensadvice.org.uk/about-us/contact-us/'>Citizens Advice</a> or your <a href='https://www.lawcentres.org.uk/list-of-law-centres'>local Law Centre</a> for help. ",
+      iconFallbackText: "Warning"
+    }) }}
+
+
+    {{ govukButton({ text: "Start now", href:
+    "are-you-renting-in-england-or-wales", isStartButton: true }) }}
+  </div>
+</div>
+
+{% endblock %}
