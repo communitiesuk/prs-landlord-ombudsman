@@ -1,0 +1,154 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Points of touch – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {% if data['haveYouSpokenToAnyone'] === 'landlord' %}
+        {{ govukDateInput({
+          id: "dateContacted",
+          namePrefix: "dateContacted",
+          fieldset: {
+            legend: {
+              text: "When did you contact your landlord?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2024"
+          }
+        }) }}
+
+        {{ govukRadios({
+          name: "methodOfContact",
+          fieldset: {
+            legend: {
+              text: "How did you contact your landlord?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "phone",
+              text: "Phone (Voice Call)"
+            },
+            {
+              value: "email",
+              text: "Email"
+            },
+            {
+              value: "letter",
+              text: "Letter"
+            },
+            {
+              value: "in-person",
+              text: "In person"
+            },
+            {
+              value: "sms",
+              text: "Text Message (SMS, WhatsApp, etc.)"
+            }
+          ]
+        }) }}
+        {% endif %}
+
+        {% if data['haveYouSpokenToAnyone'] === 'localAuthority' %}
+          {{ govukDateInput({
+            id: "dateContacted",
+            namePrefix: "dateContacted",
+            fieldset: {
+              legend: {
+                text: "When did you contact your local authority?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            }
+          }) }}
+
+          {{ govukRadios({
+            name: "assistanceReceived",
+            fieldset: {
+              legend: {
+                text: "Did you receive any assistance from your local authority?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ],
+            hint: {
+              text: "This includes any help or advice you received from your local authority."
+            }
+          }) }}
+        {% endif %}
+
+        {% if data['haveYouSpokenToAnyone'] === 'charity' %}
+          {{ govukDateInput({
+            id: "dateContacted",
+            namePrefix: "dateContacted",
+            fieldset: {
+              legend: {
+                text: "When did you contact your charity?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            }
+          }) }}
+
+          {{ govukRadios({
+            name: "assistanceReceived",
+            fieldset: {
+              legend: {
+                text: "Did you receive any assistance from the charity?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ],
+            hint: {
+              text: "This includes any help or advice you received from your local authority."
+            }
+          }) }}
+        {% endif %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

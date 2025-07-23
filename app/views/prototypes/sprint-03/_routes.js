@@ -8,11 +8,47 @@ const guidancePaths = {
   tenant: 'prototypes/sprint-03/early-res-comms/partials/tenant-guidance.njk'
 };
 
+// Add your routes above the module.exports line
+// LLM
+router.post("/llm/are-you-renting-in-england-or-wales", function (req, res) {
+  if (req.session.data["rentingEnglandOrWales"] == "yes") {
+    res.redirect("what-do-you-need-help-with");
+  } else if (req.session.data["rentingEnglandOrWales"] == "no") {
+    res.redirect("cannot-use-service");
+  }
+});
+
+router.post("/llm/what-do-you-need-help-with", function (req, res) {
+  res.redirect("have-you-spoken-to-anyone");
+});
+
+router.post("/llm/have-you-spoken-to-anyone", function (req, res) {
+  if (req.session.data["haveYouSpokenToAnyone"] == "no") {
+    res.redirect("more-information");
+  } else if(req.session.data["haveYouSpokenToAnyone"] === 'landlord' || req.session.data["haveYouSpokenToAnyone"] === 'localAuthority' || req.session.data["haveYouSpokenToAnyone"] === 'charity') {
+    res.redirect("points-of-touch");
+  }
+});
+
+router.post("/llm/points-of-touch", function (req, res) {
+  res.redirect("more-information");
+});
+
+router.post("/llm/more-information", function (req, res) {
+  res.redirect("resolution");
+});
+
+router.get("/llm/resolution", function (req, res) {
+  res.render("prototypes/sprint-02/llm/resolution", {
+    token: process.env.OPENAI_API_KEY
+  });
+});
+
 // This handles requests to '/prototypes/sprint-03/early-res-comms/'
 router.get('/early-res-comms/', (req, res) => {
   req.session.data = {};
   res.render('prototypes/sprint-03/early-res-comms/index');
-});
+  });
 
 // This handles the form submission from the role selection page
 router.post('/early-res-comms/select-role', (req, res) => {
