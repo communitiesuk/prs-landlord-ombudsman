@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-       <h1 class="govuk-heading-xl">Add a tenants details</h1>
+       <h1 class="govuk-heading-xl">Add your tenant’s details</h1>
 
         <form class="form" method="post">
        
@@ -25,7 +25,7 @@
 
             {{ govukInput({
               label: {
-                text: "Tenant name"
+                text: "Tenant’s name"
               },
               id: "event-name",
               name: "eventName"
@@ -33,10 +33,10 @@
 
             {{ govukInput({
               label: {
-                text: "Tenant email address"
+                text: "Tenant’s email address"
               },
               hint: {
-                text: "We’ll only use this to send you a receipt"
+                text: ""
               },
               id: "email",
               name: "email",
@@ -47,7 +47,7 @@
 
             {{ govukInput({
               label: {
-                text: "Tenant phone number"
+                text: "Tenant’s mobile number"
               },
               id: "phone-number",
               name: "phoneNumber",
