@@ -11,22 +11,6 @@
 
 {% block beforeContent %}
 
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -67,7 +51,7 @@
 
       <p>You will need:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>your tenant's details and details of the tenancy start date</li>
+        <li>your tenant's details and their tenancy start date</li>
       </ul>
 
  
@@ -76,7 +60,7 @@
 
     <div class="govuk-grid-column-one-third">
 
-      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <!-- <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
           Subsection
         </h2>
@@ -99,7 +83,7 @@
             </li>
           </ul>
         </nav>
-      </aside>
+      </aside> -->
 
     </div>
   </div>
