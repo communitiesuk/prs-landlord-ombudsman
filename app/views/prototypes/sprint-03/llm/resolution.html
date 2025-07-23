@@ -118,6 +118,16 @@
           </div>
         ) : answer ? (
           <div className="govuk-width-container">
+            <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+              <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                  Important
+                </h2>
+              </div>
+              <div class="govuk-notification-banner__content">
+                  You can retrive this advice at any time with the reference: <b>#123456790</b>.
+              </div>
+            </div>
             <div className="govuk-grid-row">
               <div className="govuk-grid-column-two-thirds">
                 <div dangerouslySetInnerHTML={createMarkup(answer)} />

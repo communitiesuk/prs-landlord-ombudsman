@@ -39,7 +39,7 @@ router.post("/llm/more-information", function (req, res) {
 });
 
 router.get("/llm/resolution", function (req, res) {
-  res.render("prototypes/sprint-02/llm/resolution", {
+  res.render("prototypes/sprint-03/llm/resolution", {
     token: process.env.OPENAI_API_KEY
   });
 });
