@@ -19,14 +19,14 @@ router.post("/llm/are-you-renting-in-england-or-wales", function (req, res) {
 });
 
 router.post("/llm/what-do-you-need-help-with", function (req, res) {
-  res.redirect("have-you-spoken-to-anyone");
+  res.redirect("have-you-spoken-to-your-landlord");
 });
 
-router.post("/llm/have-you-spoken-to-anyone", function (req, res) {
-  if (req.session.data["haveYouSpokenToAnyone"] == "no") {
-    res.redirect("more-information");
-  } else if(req.session.data["haveYouSpokenToAnyone"] === 'landlord' || req.session.data["haveYouSpokenToAnyone"] === 'localAuthority' || req.session.data["haveYouSpokenToAnyone"] === 'charity') {
+router.post("/llm/have-you-spoken-to-your-landlord", function (req, res) {
+  if (req.session.data["haveYouSpokenToYourLandlord"] == "yes") {
     res.redirect("points-of-touch");
+  } else {
+    res.redirect("more-information");
   }
 });
 
