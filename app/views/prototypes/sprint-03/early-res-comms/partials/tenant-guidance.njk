@@ -1,0 +1,67 @@
+{# 1. Import the accordion component macro #}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+{# 
+   2. Because the 'Raising a dispute' section contains a Nunjucks macro (for the button),
+   we first 'capture' its full HTML content into a variable. 
+#}
+{% set disputeContent %}
+  <p class="govuk-body">Steps to be completed before raising a dispute:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>gather evidence</li>
+    <li>contact the housing team at your local council</li>
+  </ul>
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({ text: "Raise a dispute" }) }}
+{% endset %}
+
+{# 3. Set up the data for all accordion items #}
+{% set tenantGuidance = [
+  {
+    heading: {
+      text: "Tenancy and rent"
+    },
+    content: {
+      html: '<p class="govuk-body">Guidance on how to handle common tenancy problems such as rent arrears and eviction notices.</p>'
+    }
+  },
+  {
+    heading: {
+      text: "Maintenance and repairs"
+    },
+    content: {
+      html: '
+        <p class="govuk-body">Private landlords must sort out repairs to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>electrical wiring</li>
+          <li>gas pipes and boilers</li>
+          <li>heating and hot water</li>
+          <li>ventilation and chimneys</li>
+          <li>sinks, baths and toilets</li>
+          <li>plumbing and drains</li>
+          <li>internal and external walls</li>
+          <li>stairs and bannisters</li>
+          <li>doors and windows</li>
+          <li>the roof</li>
+        </ul>
+        <p class="govuk-body"><strong>How long should repairs take?</strong></p>
+        <p class="govuk-body">Your landlord must carry out repairs within a reasonable period of time.</p>
+        <p class="govuk-body">Timescales depend on how serious the problem is.</p>
+      '
+    }
+  },
+  {
+    heading: {
+      text: "Raising a dispute"
+    },
+    content: {
+      html: disputeContent
+    }
+  }
+] %}
+
+{# 4. Call the accordion macro with the data #}
+{{ govukAccordion({
+  id: "tenant-guidance",
+  items: tenantGuidance
+}) }}

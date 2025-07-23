@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       <h1 class="govuk-heading-xl">Add your details</h1>
+
+       <form class="form" method="post">
+
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+
+            {{ govukInput({
+              label: {
+                text: "Name"
+              },
+              id: "event-name",
+              name: "eventName"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Email address"
+              },
+              hint: {
+                text: "We’ll only use this to send you a receipt"
+              },
+              id: "email",
+              name: "email",
+              type: "email",
+              autocomplete: "email",
+              spellcheck: false
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Phone number"
+              },
+              id: "phone-number",
+              name: "phoneNumber",
+              type: "tel",
+              autocomplete: "tel",
+              classes: "govuk-input--width-20"
+            }) }}
+
+
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
