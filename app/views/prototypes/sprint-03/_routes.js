@@ -12,9 +12,17 @@ const guidancePaths = {
 // LLM
 router.post("/llm/are-you-renting-in-england-or-wales", function (req, res) {
   if (req.session.data["rentingEnglandOrWales"] == "yes") {
-    res.redirect("what-do-you-need-help-with");
+    res.redirect("urgent-issue");
   } else if (req.session.data["rentingEnglandOrWales"] == "no") {
     res.redirect("cannot-use-service");
+  }
+});
+
+router.post("/llm/urgent-issue", function (req, res) {
+  if (req.session.data["urgentIssue"] == "yes") {
+    res.redirect("urgent-resolution");
+  } else {
+    res.redirect("what-do-you-need-help-with");
   }
 });
 
