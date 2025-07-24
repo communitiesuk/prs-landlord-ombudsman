@@ -81,6 +81,7 @@
   </div>
 
   <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-l">Guidance</h2>
     {% include guidancePath %}
   </div>
 </div>
@@ -131,6 +132,10 @@
 
         if (message.imageUrl) {
           messageHTML += `<img src="${message.imageUrl}" alt="User uploaded image">`;
+        }
+
+        if (message.datestamp) {
+          messageHTML += `<p class="govuk-body-xs govuk-!-margin-top-1 govuk-!-margin-bottom-0" style="text-align: left; opacity: 0.8;">${message.datestamp}</p>`;
         }
 
         messageDiv.innerHTML = messageHTML;

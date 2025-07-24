@@ -1,3 +1,5 @@
+
+
 {# 1. Import the accordion component macro #}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
@@ -6,6 +8,8 @@
    we first 'capture' its full HTML content into a variable. 
 #}
 {% set disputeContent %}
+  <p>If you have a dispute with your landlord, you should try and negotiate directly, keeping a record of all your correspondence, ideally in writing.</p>
+  <p>You could potentially use a mediator or register a dispute with the Ombudsman.</p>
   <p class="govuk-body">Steps to be completed before raising a dispute:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>gather evidence</li>
@@ -22,7 +26,9 @@
       text: "Tenancy and rent"
     },
     content: {
-      html: '<p class="govuk-body">Guidance on how to handle common tenancy problems such as rent arrears and eviction notices.</p>'
+      html: '<p class="govuk-body">If your landlord wants to increase your rent, they must serve you with a formal notice known as a Section 13 notice. Normally, this notice must be served one month before a new rent starts.</p>
+            <p>They can only raise your rent once every 12 months - you can challenge the amount of the increase if you feel it is unreasonable.</p>
+      '
     }
   },
   {
@@ -31,23 +37,9 @@
     },
     content: {
       html: '
-        <p class="govuk-body">Private landlords must sort out repairs to:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>electrical wiring</li>
-          <li>gas pipes and boilers</li>
-          <li>heating and hot water</li>
-          <li>ventilation and chimneys</li>
-          <li>sinks, baths and toilets</li>
-          <li>plumbing and drains</li>
-          <li>internal and external walls</li>
-          <li>stairs and bannisters</li>
-          <li>doors and windows</li>
-          <li>the roof</li>
-        </ul>
-        <p class="govuk-body"><strong>How long should repairs take?</strong></p>
-        <p class="govuk-body">Your landlord must carry out repairs within a reasonable period of time.</p>
-        <p class="govuk-body">Timescales depend on how serious the problem is.</p>
-      '
+        <p class="govuk-body">As a tenant, you must keep your rental property in a good state, telling your landlord about any necessary repairs and fixing any damage you may cause. Your landlord handles structural and major repairs.</p>
+        <p>Your responsibilities as a tenant include minor repairs like changing light bulbs, replacing batteries in smoke detectors, and unclogging sinks, unless the problem is due to a structural issue.</p>
+        '
     }
   },
   {

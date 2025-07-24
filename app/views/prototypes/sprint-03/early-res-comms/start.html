@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Create a landlord account – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -11,6 +11,25 @@
 
 {% block beforeContent %}
 
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Getting help with a private rental",
+      href: "#"
+    },
+    {
+      text: "Create a landlord account",
+      href: "#"
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 {% block content %}
@@ -19,14 +38,17 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Create a landlord account with Ministry of Housing, Communities and Local Government (MHCLG)
+        Create a landlord account
       </h1>
+
+      <p>Introduction. Legal requirement to register. Blah blah.</p>
 
       <p>Use this service to:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>register your rental property on to the MHCLG database</li>
+        <li>register your rental property on to the Ministry of Housing, Communities and Local Government (MHCLG) database</li>
         <li>register for the Ombudsman scheme</li>
+        <li>add details of your rental property</li>
         <li>add your contact details</li>
         <li>add a tenant’s contact details</li>
       </ul>
@@ -51,7 +73,8 @@
 
       <p>You will need:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>your tenant's details and their tenancy start date</li>
+        <li>your tenant's email address and mobile phone number</li>
+        <li>your tenant's tenancy start date</li>
       </ul>
 
  
