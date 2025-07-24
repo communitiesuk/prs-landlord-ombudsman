@@ -19,36 +19,22 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "haveYouSpokenToAnyone",
+          name: "haveYouSpokenToYourLandlord",
           fieldset: {
             legend: {
-              text: "Have you spoken to anyone about this problem?",
+              text: "Have you spoken to your landlord about this issue?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
-          hint: {
-            text: "Select one option if applicable"
-          },
           items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
             {
               value: "no",
               text: "No"
-            },
-            {
-              value: "landlord",
-              text: "Landlord"
-            },
-            {
-              value: "localAuthority",
-              text: "Local authority"
-            },
-            {
-              value: "charity",
-              text: "Charity",
-              hint: {
-                text: "Includes Shelter, Citizens Advice, and other charities"
-              }
             }
           ]
         }) }}
