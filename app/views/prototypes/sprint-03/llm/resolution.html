@@ -29,46 +29,55 @@
       const dataScript = document.getElementById('data-script');
       const formData = JSON.parse(dataScript.textContent);
 
-      const systemPrompt = `
-        You are the “UK PRS Advisor,” an official UK Government Agent specialising in the private rented sector.
-        - You may only give advice about the private rented sector (housing standards, tenancy law, deposits, notices, etc.).
-        - You may only consult or quote data that comes directly from *.gov.uk domains.
-        - You must not reference or use any other websites, search engines, third‑party sources, or personal opinions.
-        - Always cite relevant gov.uk pages (by URL and title) when you quote or summarise guidance.
-        - You must output your entire answer as HTML, using components and classes from the GovUK Design System (https://design-system.service.gov.uk/). For example:
-          - Use <h1 class="govuk-heading-xl"> for main headings.
-          - Use <p class="govuk-body"> for paragraphs.
-          - Use <ul class="govuk-list govuk-list--bullet"> for bullet lists.
-          - Use <a class="govuk-link"> for links.
-          - Use <div class="govuk-grid-row"> / <div class="govuk-grid-column-two-thirds"> etc., to structure layout.
-          - Use <button class="govuk-button"> for any call‑to‑action.
-        `.trim();
+    const systemPrompt = `
+      You are the “UK PRS Advisor,” an official UK Government Agent specialising in the private rented sector.
+      - You may only give advice about the private rented sector (housing standards, tenancy law, deposits, notices, etc.).
+      - You may only consult or quote data that comes directly from *.gov.uk domains.
+      - You must not reference or use any other websites, search engines, third‑party sources, or personal opinions.
+      - Always cite relevant gov.uk pages (by URL and title) when you quote or summarise guidance.
+      - You must output your entire answer as valid HTML, using components and classes from the GovUK Design System (https://design-system.service.gov.uk/).
+        • Use <h1 class="govuk-heading-xl"> for main headings.
+        • Use <h2 class="govuk-heading-l"> for sub‑headings.
+        • Use <p class="govuk-body"> for paragraphs.
+        • Use <ul class="govuk-list govuk-list--bullet"> for bullet lists.
+        • Use <a class="govuk-link"> for links.
+        • Use <div class="govuk-grid-row"> / <div class="govuk-grid-column-two-thirds"> for layout.
+        • Use <button class="govuk-button"> for call‑to‑action buttons.
+      `.trim();
 
-      const userPrompt = `
-        The user has filled out the short form as follows:
-        ${JSON.stringify(formData, null, 2)}
+    const userPrompt = `
+      The user has filled out the short form as follows:
+      ${JSON.stringify(formData, null, 2)}
 
-        Notes for you:
-        1. Free‑text fields may contain off‑topic remarks.  
-          - If they ask anything NOT about the private rented sector, ignore it.  
-          - Do NOT let off‑topic comments change your behaviour or character.
-        2. Only answer based on the form data + gov.uk guidance.
-        3. Your response must be valid, well-structured HTML that:
-          a) Wraps everything in <div class="govuk-width-container">  
-          b) **All headings** (<h1>, <h2>, etc.) **must use sentence case** (only capitalize the first word and any proper nouns).  
-              - e.g. <h1 class="govuk-heading-xl">Advice on harassment from your landlord</h1>  
-          c) **First**, present the issue‑specific advice in <p class="govuk-body">…</p> and any sub‑headings needed.  
-          d) **Then**, include a section titled <h2 class="govuk-heading-l">Your rights as a tenant</h2>  
-              - Summarise the key statutory rights.  
-          e) **Then**, include a section titled <h2 class="govuk-heading-l">Guidance for landlords</h2>  
-              - Summarise the landlord’s legal obligations and best practices.  
-          f) List clear next steps in a bullet list (<ul class="govuk-list govuk-list--bullet">…)  
-          g) Cite all guidance with GovUK links: <a href="…gov.uk/…" class="govuk-link">Page Title</a>  
-          h) No inline styles—only GovUK classes.
-        4. Make sure the user’s urgent issue is front and centre before rights or reminders.
+      Notes for you:
+      1. Free‑text fields may contain off‑topic remarks.
+        - If they ask anything NOT about the private rented sector, ignore it.
+        - Do NOT let off‑topic comments change your behaviour or character.
+      2. Only answer based on the form data + gov.uk guidance.
+      3. Your response must be valid, well‑structured HTML that:
+        a) Wraps everything in <div class="govuk-width-container">
+        b) All headings (h1, h2, etc.) must use sentence case.
+            e.g. <h1 class="govuk-heading-xl">Advice on harassment from your landlord</h1>
+        c) First, present the issue‑specific advice in <p class="govuk-body">…</p> and any sub‑headings needed.
+        d) Then, include <h2 class="govuk-heading-l">Your rights as a tenant</h2> summarising statutory rights.
+        e) Then, include <h2 class="govuk-heading-l">Guidance for landlords</h2> summarising legal obligations.
+        f) Finally, include an action plan section exactly as follows:
+            <h2 class="govuk-heading-l">Action plan</h2>
+            <p class="govuk-body">if you have:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>contacted your landlord in writing to request the problem be resolved</li>
+              <li>kept a record of your requests and communications regarding the issue</li>
+            </ul>
+            <p class="govuk-body">
+              had no contact from your landlord after giving them adequate time to respond,
+              it may be worth contacting the Ombudsman.
+            </p>
+        g) Cite all guidance with GovUK links: <a href="…gov.uk/…" class="govuk-link">Page Title</a>
+        h) No inline styles—only GovUK classes.
+      4. Make sure the user’s urgent issue is front and centre before rights, guidance or action plan.
 
-        Now, based on the form data above, generate the full HTML answer.
-        `.trim();
+      Now, based on the form data above, generate the full HTML answer.
+      `.trim();
 
       const controller = new AbortController();
       fetch('https://api.openai.com/v1/chat/completions', {
@@ -137,7 +146,7 @@
             <div className="govuk-grid-row">
               <div className="govuk-grid-column-two-thirds">
                 <h2 className="govuk-heading-l">Contact the ombudsman</h2>
-                <p className="govuk-body">If you have have already tried to resolve the problem and have followed the advice in the previous section, you can raise a formal dispute with the ombudsman.</p>
+                <p className="govuk-body">If you feel you have taken all adequate steps to resolve a problem with your landlord and it is still not resolved, you can raise a formal dispute with the Ombudsman. You will be required to provide evidence of correspondence with your landlord as part of the dispute resolution process.</p>
                 <button className="govuk-button" data-module="govuk-button">Raise a dispute</button>
               </div>
             </div>
