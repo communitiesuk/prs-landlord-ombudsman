@@ -142,6 +142,17 @@
                 <div dangerouslySetInnerHTML={createMarkup(answer)} />
               </div>
             </div>
+            <div className="govuk-grid-row">
+              <div className="govuk-grid-column-two-thirds">
+                <button 
+                  className="govuk-button govuk-button--secondary" 
+                  data-module="govuk-button"
+                  onClick={() => window.print()}
+                >
+                  Print this page
+                </button>
+              </div>
+            </div>
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" />
             <div className="govuk-grid-row">
               <div className="govuk-grid-column-two-thirds">
