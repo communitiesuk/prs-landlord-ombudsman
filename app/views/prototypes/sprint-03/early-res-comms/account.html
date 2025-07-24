@@ -12,126 +12,129 @@
 {% endblock %}
 
 {% block content %}
+{# Custom CSS to create the 'card with title' style for the summary lists #}
+<style>
+  .govuk-summary-card {
+    border: 1px solid #b1b4b6;
+    margin-bottom: 30px;
+  }
+  .govuk-summary-card__title-wrapper {
+    padding: 15px 20px;
+    background: #f3f2f1;
+  }
+  .govuk-summary-card__title {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    margin: 0;
+  }
+  @media (min-width: 40.0625em) {
+    .govuk-summary-card__title {
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+  }
+  .govuk-summary-card__content {
+    padding: 0 20px;
+  }
+</style>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Account
+        Private rental messaging account
       </h1>
 
-      <!-- <p>
-	{{ data | dump }}
-</p> -->
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-{% from "govuk/components/table/macro.njk" import govukTable %}
+      {# --- Landlord and property details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Landlord and property</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "John Smith" }
+              },
+              {
+                key: { text: "Rental property address" },
+                value: { html: "45 Holland Road<br>Hove<br>BN3 2HG" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
 
-{{ govukTable({
-  caption: "Details",
-  captionClasses: "govuk-table__caption--m",
-  firstCellIsHeader: true,
-  head: [
-    {
-      text: ""
-    },
-    {
-      text: ""
-    }
-  ],
-  rows: [
-    [
-      {
-        text: "Landlord name",
-        classes: "govuk-!-width-one-half"
-      },
-      {
-        text: "John Smith"
-      }
-    ],
-    [
-      {
-        text: "Rental property address"
-      },
-      {
-        html: "45 Holland Road<br>Hove<br>BN3 2HG"
-      }
-    ],
-    [
-      {
-        text: "Tenant name"
-      },
-      {
-        text: "Laurence Ellis"
-      }
-    ],
-    [
-      {
-        text: "Tenancy start date"
-      },
-      {
-        text: "16 July 2025"
-      }
-    ]
-  ]
-}) }}
+      {# --- Tenant details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Tenant</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "Laurence Ellis" }
+              },
+              {
+                key: { text: "Tenancy start date" },
+                value: { text: "16 July 2025" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
 
-{{ govukTable({
-  caption: "Local authority",
-  captionClasses: "govuk-table__caption--m",
-  firstCellIsHeader: true,
-  head: [
-    {
-      text: ""
-    },
-    {
-      text: ""
-    }
-  ],
-  rows: [
-    [
-      {
-        text: "Name",
-        classes: "govuk-!-width-one-half"
-      },
-      {
-        text: "Brighton & Hove City Council",
-        classes: "govuk-!-width-one-half"
-      }
-    ],
-    [
-      {
-        text: "Housing team telephone"
-      },
-      {
-        text: "01273 293156"
-      }
-    ],
-    [
-      {
-        text: "Housing team email address"
-      },
-      {
-        text: "psh@brighton-hove.gov.uk"
-      }
-    ],
-    [
-      {
-        text: "Website"
-      },
-      {
-        html: "<a href='https://www.brighton-hove.gov.uk'>brighton-hove.gov.uk</a> "
-      }
-    ]
-  ]
-}) }}
+      {# --- Local authority details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Local authority</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "Brighton & Hove City Council" }
+              },
+              {
+                key: { text: "Housing team telephone" },
+                value: { text: "01273 293156" }
+              },
+              {
+                key: { text: "Housing team email address" },
+                value: { text: "psh@brighton-hove.gov.uk" }
+              },
+              {
+                key: { text: "Website" },
+                value: { html: "<a href='https://www.brighton-hove.gov.uk' class='govuk-link'>brighton-hove.gov.uk</a>" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
 
 
-      <h3 class="govuk-heading-m">
+      <h3 class="govuk-heading-l">
         Message your {{ "tenant" if userRole == 'landlord' else "landlord" }}
       </h3>
-      <p>Message your {{ "tenant" if userRole == 'landlord' else "landlord" }} to try to and resolve any tenancy and maintance and repairs issues. You messages may be used to help resolve any disputes.</p>
-      <p><a href="chat">Message</a></p>
-
+      <p class="govuk-body">Message your {{ "tenant" if userRole == 'landlord' else "landlord" }} to try to and resolve any tenancy and maintance and repairs issues. You messages may be used to help resolve any disputes.</p>
+      
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {{ govukButton({
+        text: "Message your " + ("tenant" if userRole == 'landlord' else "landlord"),
+        href: "chat",
+        element: "a"
+      }) }}
 
     </div>
   </div>
