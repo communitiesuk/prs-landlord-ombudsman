@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Sign in to your private rental messaging account
+      </h1>
+
+      <p>Use the service to tell your landlord about any issues with your property, including maintenance, safety or changes to your rent or tenancy agreement.</p>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <form action="/prototypes/sprint-03/early-res-comms/handle-sign-in" method="post">
+
+            {{ govukInput({
+            label: {
+                text: "Email address",
+                classes: "govuk-label--m"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "email-address",
+            name: "emailAddress"
+            }) }}
+
+            {{ govukInput({
+            label: {
+                text: "Password",
+                classes: "govuk-label--m"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "password",
+            name: "passWord"
+            }) }}
+
+<p><a href="#">Forgot your password</a></p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Sign in"
+}) }}
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

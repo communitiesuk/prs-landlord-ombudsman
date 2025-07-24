@@ -41,16 +41,23 @@
         Create a landlord account
       </h1>
 
-      <p>The government will introduce a new Private Rented Sector Landlord Ombudsman Service, which all private landlords in England with assured or regulated tenancies will be required by law to join, including those who use a managing agent.</p>
+      <p>All private landlords in England with assured or regulated tenancies are required by law to:</p>
 
-      <p>The Renters’ Rights Bill will introduce a new Private Rented Sector Database. All landlords of assured and regulated tenancies will be legally required to register themselves and their properties on the database and could be subject to penalties if they market or let out a property without registering it and providing the required information.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>join the Private Rented Sector Landlord Ombudsman Service, including those who use a managing agent</li>
+        <li>register themselves and their rental properties on the Private Rented Sector Database</li>
+      </ul>
+
+        {{ govukWarningText({
+          text: "Landlords could be subject to penalties if they market or let out a property without registering it and providing the required information.",
+          iconFallbackText: "Warning"
+        }) }}
 
       <p>Use this service to:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>register your rental property on to the Ministry of Housing, Communities and Local Government (MHCLG) database</li>
-        <li>register for the Ombudsman scheme</li>
-        <li>add details of your rental property</li>
+        <li>register yourself and your rental properties on the Private Rented Sector Database</li>
+        <li>join the Private Rented Sector Landlord Ombudsman Service</li>
         <li>add your contact details</li>
         <li>add a tenant’s contact details</li>
       </ul>
@@ -63,12 +70,6 @@
         text: "When you've completed registration, you can message your tenant to resolve an issue or dispute."
       }) }}
 
-      {{ govukButton({
-        text: "Start now",
-        href: "property-details",
-        isStartButton: true
-      }) }}
-
       <h2 class="govuk-heading-m">
         Before you start
       </h2>
@@ -78,6 +79,14 @@
         <li>your tenant's email address and mobile phone number</li>
         <li>your tenant's tenancy start date</li>
       </ul>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "property-details",
+        isStartButton: true
+      }) }}
+
+
 
  
 

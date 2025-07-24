@@ -17,33 +17,38 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Sign in to your private rental messaging account
+        Sign in to your landlord account
       </h1>
 
-      <p>
-        If you are a landlord. If you are a tenant. This is the Early Resolution messaging service, which landlords and tenants can use to get the answer to a problem with their rental property.
-      </p>
+      <p> Sign in to your landlord account to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>update your rental properties on the Private Rented Sector Database</li>
+        <li>notify your tenant of an issue regarding your property or a change to their tenancy</li>
+      </ul>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <form action="handle-login" method="post">
+      <form action="/prototypes/sprint-03/early-res-comms/handle-sign-in" method="post">
 
 {{ govukInput({
   label: {
-    text: "Email address"
+    text: "Email address",
+    classes: "govuk-label--m"
   },
   classes: "govuk-!-width-one-half",
-  id: "event-name",
-  name: "eventName"
+  id: "email-address",
+  name: "emailAddress"
 }) }}
 
 {{ govukInput({
   label: {
-    text: "Password"
+    text: "Password",
+    classes: "govuk-label--m"
   },
   classes: "govuk-!-width-one-half",
-  id: "event-name",
-  name: "eventName"
+  id: "password",
+  name: "passWord"
 }) }}
 
 <p><a href="#">Forgot your password</a></p>

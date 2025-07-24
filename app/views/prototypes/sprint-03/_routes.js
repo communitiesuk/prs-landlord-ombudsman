@@ -44,36 +44,47 @@ router.get("/llm/resolution", function (req, res) {
   });
 });
 
-// This handles requests to '/prototypes/sprint-03/early-res-comms/'
+// Route 2: Start Page
 router.get('/early-res-comms/', (req, res) => {
   req.session.data = {};
   res.render('prototypes/sprint-03/early-res-comms/index');
-  });
+});
 
-// This handles the form submission from the role selection page
+// Route 3: Handle role selection and redirect to the sign-in page with a query parameter
 router.post('/early-res-comms/select-role', (req, res) => {
-  req.session.data['userRole'] = req.body.userRole;
-  res.redirect('login');
+  const userRole = req.body.userRole;
+  req.session.data['userRole'] = userRole;
+
+  // Redirect to a URL with a query parameter, e.g., 'sign-in?role=landlord'
+  res.redirect(`sign-in?role=${userRole}`);
 });
 
-// --- Login, Account, and Chat routes ---
-
-router.get('/early-res-comms/login', (req, res) => {
-  res.render('prototypes/sprint-03/early-res-comms/login');
+// Route 4: Catches the '/sign-in' URL and checks the query parameter
+router.get('/early-res-comms/sign-in', (req, res) => {
+  // Read the role from the query parameter
+  const role = req.query.role;
+  
+  // Render the correct template based on the role
+  res.render(`prototypes/sprint-03/early-res-comms/${role}-sign-in`);
 });
 
-router.post('/early-res-comms/handle-login', (req, res) => {
+// Route 5: Sign-in form handler - simplified path
+router.post('/early-res-comms/handle-sign-in', (req, res) => {
   res.redirect('account');
 });
 
+// Route 6: Account page - UPDATED
 router.get('/early-res-comms/account', (req, res) => {
+  // Get the userRole from the session
   const userRole = req.session.data['userRole'];
 
+  // Pass the userRole variable to the template when rendering
   res.render('prototypes/sprint-03/early-res-comms/account', {
-    userRole: userRole // Now 'userRole' is available in the template
+    userRole: userRole
   });
 });
 
+// Route 7: Main chat page
 router.get('/early-res-comms/chat', (req, res) => {
   const userRole = req.session.data['userRole'];
 
