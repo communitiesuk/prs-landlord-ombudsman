@@ -35,6 +35,7 @@
       - You may only consult or quote data that comes directly from *.gov.uk domains.
       - You must not reference or use any other websites, search engines, third‑party sources, or personal opinions.
       - Always cite relevant gov.uk pages (by URL and title) when you quote or summarise guidance.
+      - Your tone must be professional and authoritative, with a calm, measured narration. Matching the writing style of the GOV.UK website.
       - You must output your entire answer as valid HTML, using components and classes from the GovUK Design System (https://design-system.service.gov.uk/).
         • Use <h1 class="govuk-heading-xl"> for main headings.
         • Use <h2 class="govuk-heading-l"> for sub‑headings.
@@ -59,19 +60,26 @@
         b) All headings (h1, h2, etc.) must use sentence case.
             e.g. <h1 class="govuk-heading-xl">Advice on harassment from your landlord</h1>
         c) First, present the issue‑specific advice in <p class="govuk-body">…</p> and any sub‑headings needed.
-        d) Then, include <h2 class="govuk-heading-l">Your rights as a tenant</h2> summarising statutory rights.
-        e) Then, include <h2 class="govuk-heading-l">Guidance for landlords</h2> summarising legal obligations.
-        f) Finally, include an action plan section exactly as follows:
-            <h2 class="govuk-heading-l">Action plan</h2>
+        d) then, include an action plan section exactly as follows:
+            <h2 class="govuk-heading-l">Next Steps</h2>
             <p class="govuk-body">if you have:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>contacted your landlord in writing to request the problem be resolved</li>
+              <li>
+                contacted your landlord in writing to request the problem be resolved
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    You can use one of our <a href="#" class="govuk-link">letter templates</a> to help you contact your landlord.
+                  </li>
+                </ul>
+              </li>
               <li>kept a record of your requests and communications regarding the issue</li>
             </ul>
             <p class="govuk-body">
               had no contact from your landlord after giving them adequate time to respond,
               it may be worth contacting the Ombudsman.
             </p>
+        e) Then, include <h2 class="govuk-heading-l">Your rights as a tenant</h2> summarising statutory rights.
+        f) Finally, include <h2 class="govuk-heading-l">Your landlords responsibilities</h2> summarising legal obligations.
         g) Cite all guidance with GovUK links: <a href="…gov.uk/…" class="govuk-link">Page Title</a>
         h) No inline styles—only GovUK classes.
       4. Make sure the user’s urgent issue is front and centre before rights, guidance or action plan.
@@ -134,7 +142,12 @@
                 </h2>
               </div>
               <div class="govuk-notification-banner__content">
+                <p className="govuk-body">
                   You can retrive this advice at any time with the reference: <b>#123456790</b>.
+                </p>
+                <p className="govuk-body">
+                  This answers you submitted will be anonymously stored and will not be used to contact or identify you. You can retrive yours answers for the next 90 days, after which they will be deleted. 
+                </p>
               </div>
             </div>
             <div className="govuk-grid-row">
@@ -153,12 +166,11 @@
                 </button>
               </div>
             </div>
-            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" />
             <div className="govuk-grid-row">
               <div className="govuk-grid-column-two-thirds">
-                <h2 className="govuk-heading-l">Contact the ombudsman</h2>
-                <p className="govuk-body">If you feel you have taken all adequate steps to resolve a problem with your landlord and it is still not resolved, you can raise a formal dispute with the Ombudsman. You will be required to provide evidence of correspondence with your landlord as part of the dispute resolution process.</p>
-                <button className="govuk-button" data-module="govuk-button">Raise a dispute</button>
+                <h2 className="govuk-heading-l">Contact your landlord</h2>
+                <p className="govuk-body">Your landlord has a legal obligation to register themself with the Ombudsman, you can use our "Contact your landlord" service to open a secure conversation with your landlord regarding your issue.</p>
+                <a href="/prototypes/sprint-03/early-res-comms/sign-in?role=tenant" className="govuk-button" data-module="govuk-button">Contact your landlord</a>
               </div>
             </div>
           </div>
