@@ -1,0 +1,50 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Registration complete",
+        html: "Your reference number<br><strong>HDJ2123F</strong>",
+        classes: "alb-button"
+      }) }}
+
+      <!-- <p>
+        We have sent you a confirmation email.
+      </p> -->
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+        You will receive an email containing details of your registration to the Private Rented Sector database.
+      </p>
+
+      <p>
+        You and your tenant also now have an email confirmation you are registered to use the Ombudsman scheme to resolve a problem with the rental property.
+      </p>
+
+      
+
+      <p>This means you and your tenant can log in and use our messaging service to get an early resolution to an issue if required.</p>
+
+      <p>Most users resolve their issue without the need to escalate a problem.</p>
+      
+      <p>
+        <a href="#">
+          What did you think of this service?
+        </a> (takes 30 seconds)
+      </p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

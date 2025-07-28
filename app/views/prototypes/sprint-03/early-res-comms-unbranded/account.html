@@ -1,0 +1,143 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{# Custom CSS to create the 'card with title' style for the summary lists #}
+<style>
+  .govuk-summary-card {
+    border: 1px solid #b1b4b6;
+    margin-bottom: 30px;
+  }
+  .govuk-summary-card__title-wrapper {
+    padding: 15px 20px;
+    background: #f3f2f1;
+  }
+  .govuk-summary-card__title {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    margin: 0;
+  }
+  @media (min-width: 40.0625em) {
+    .govuk-summary-card__title {
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+  }
+  .govuk-summary-card__content {
+    padding: 0 20px;
+  }
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Private rental messaging account
+      </h1>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {# --- Landlord and property details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Landlord and property</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "John Smith" }
+              },
+              {
+                key: { text: "Rental property address" },
+                value: { html: "45 Holland Road<br>Hove<br>BN3 2HG" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      {# --- Tenant details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Tenant</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "Laurence Ellis" }
+              },
+              {
+                key: { text: "Tenancy start date" },
+                value: { text: "16 July 2025" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      {# --- Local authority details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Local authority</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "Brighton & Hove City Council" }
+              },
+              {
+                key: { text: "Housing team telephone" },
+                value: { text: "01273 293156" }
+              },
+              {
+                key: { text: "Housing team email address" },
+                value: { text: "psh@brighton-hove.gov.uk" }
+              },
+              {
+                key: { text: "Website" },
+                value: { html: "<a href='https://www.brighton-hove.gov.uk' class='govuk-link'>brighton-hove.gov.uk</a>" }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+
+      <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Message your {{ "tenant" if userRole == 'landlord' else "landlord" }}
+      </h3>
+      <p class="govuk-body">Message your {{ "tenant" if userRole == 'landlord' else "landlord" }} to try to and resolve any tenancy and maintenance and repairs issues. Your messages may be used to help resolve any disputes.</p>
+      
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {{ govukButton({
+        text: "Message your " + ("tenant" if userRole == 'landlord' else "landlord"),
+        href: "chat",
+        element: "a",
+        classes: "alb-button"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

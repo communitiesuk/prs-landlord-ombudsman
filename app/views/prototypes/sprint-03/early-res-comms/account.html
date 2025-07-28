@@ -127,7 +127,7 @@
       <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
         Message your {{ "tenant" if userRole == 'landlord' else "landlord" }}
       </h3>
-      <p class="govuk-body">Message your {{ "tenant" if userRole == 'landlord' else "landlord" }} to try to and resolve any tenancy and maintance and repairs issues. You messages may be used to help resolve any disputes.</p>
+      <p class="govuk-body">Message your {{ "tenant" if userRole == 'landlord' else "landlord" }} to try to and resolve any tenancy and maintenance and repairs issues. Your messages may be used to help resolve any disputes.</p>
       
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {{ govukButton({
