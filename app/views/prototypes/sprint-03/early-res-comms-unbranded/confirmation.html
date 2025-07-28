@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/unbranded.html" %}
 
 {% block pageTitle %}
   Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -11,7 +11,8 @@
 
       {{ govukPanel({
         titleText: "Registration complete",
-        html: "Your reference number<br><strong>HDJ2123F</strong>"
+        html: "Your reference number<br><strong>HDJ2123F</strong>",
+        classes: "alb-button"
       }) }}
 
       <!-- <p>
@@ -35,8 +36,9 @@
       <p>This means you and your tenant can log in and use our messaging service to get an early resolution to an issue if required.</p>
 
       <p>Most users resolve their issue without the need to escalate a problem.</p>
+      
       <p>
-      <a href="#">
+        <a href="#">
           What did you think of this service?
         </a> (takes 30 seconds)
       </p>

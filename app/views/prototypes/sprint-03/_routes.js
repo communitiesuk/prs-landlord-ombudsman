@@ -52,6 +52,8 @@ router.get("/llm/resolution", function (req, res) {
   });
 });
 
+// GOV BRANDED
+
 // Route 2: Start Page
 router.get('/early-res-comms/', (req, res) => {
   req.session.data = {};
@@ -125,6 +127,84 @@ router.post("/early-res-comms/tenant-details", function (req, res) {
 });
 
 router.post("/early-res-comms/cya", function (req, res) {
+  res.redirect("confirmation");
+});
+
+// UNBRANDED
+
+// Route 2: Start Page
+router.get('/early-res-comms-unbranded/', (req, res) => {
+  req.session.data = {};
+  res.render('prototypes/sprint-03/early-res-comms-unbranded/index');
+});
+
+// Route 3: Handle role selection and redirect to the sign-in page with a query parameter
+router.post('/early-res-comms-unbranded/select-role', (req, res) => {
+  const userRole = req.body.userRole;
+  req.session.data['userRole'] = userRole;
+
+  // Redirect to a URL with a query parameter, e.g., 'sign-in?role=landlord'
+  res.redirect(`sign-in?role=${userRole}`);
+});
+
+// Route 4: Catches the '/sign-in' URL and checks the query parameter
+router.get('/early-res-comms-unbranded/sign-in', (req, res) => {
+  // Read the role from the query parameter
+  const role = req.query.role;
+  
+  // Render the correct template based on the role
+  res.render(`prototypes/sprint-03/early-res-comms-unbranded/${role}-sign-in`);
+});
+
+// Route 5: Sign-in form handler - simplified path
+router.post('/early-res-comms-unbranded/handle-sign-in', (req, res) => {
+  res.redirect('account');
+});
+
+// Route 6: Account page - UPDATED
+router.get('/early-res-comms-unbranded/account', (req, res) => {
+  // Get the userRole from the session
+  const userRole = req.session.data['userRole'];
+
+  // Pass the userRole variable to the template when rendering
+  res.render('prototypes/sprint-03/early-res-comms-unbranded/account', {
+    userRole: userRole
+  });
+});
+
+// Route 7: Main chat page
+router.get('/early-res-comms-unbranded/chat', (req, res) => {
+  const userRole = req.session.data['userRole'];
+
+  if (!userRole) {
+    res.redirect('/prototypes/sprint-03/early-res-comms-unbranded/');
+    return;
+  }
+
+  const staticGuidancePath = guidancePaths[userRole];
+
+  res.render('prototypes/sprint-03/early-res-comms-unbranded/chat', {
+    conversation: conversation,
+    userRole: userRole,
+    guidancePath: staticGuidancePath
+  });
+});
+
+// REGISTER
+
+router.post("/early-res-comms-unbranded/property-details", function (req, res) {
+  res.redirect("landlord-details");
+});
+
+router.post("/early-res-comms-unbranded/landlord-details", function (req, res) {
+  res.redirect("tenant-details");
+});
+
+router.post("/early-res-comms-unbranded/tenant-details", function (req, res) {
+  res.redirect("cya");
+});
+
+router.post("/early-res-comms-unbranded/cya", function (req, res) {
   res.redirect("confirmation");
 });
 

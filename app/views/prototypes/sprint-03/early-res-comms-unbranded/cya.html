@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/unbranded.html" %}
 
 {% block pageTitle %}
   Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -62,11 +62,6 @@
                 key: { text: "Rental property address" },
                 value: { html: "45 Holland Road<br>Hove<br>BN3 2HG" },
                 actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "rental property address" } ] }
-              },
-              {
-                key: { text: "Tenancy start date" },
-                value: { text: "16 July 2025" },
-                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenancy start date" } ] }
               }
             ]
           }) }}
@@ -146,7 +141,8 @@
       <form method="post" novalidate>
         {% from "govuk/components/button/macro.njk" import govukButton %}
         {{ govukButton({
-          text: "Accept and send"
+          text: "Accept and send",
+          classes: "alb-button"
         }) }}
       </form>
 

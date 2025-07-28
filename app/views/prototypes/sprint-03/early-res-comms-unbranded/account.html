@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/unbranded.html" %}
 
 {% block pageTitle %}
   Content page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -133,7 +133,8 @@
       {{ govukButton({
         text: "Message your " + ("tenant" if userRole == 'landlord' else "landlord"),
         href: "chat",
-        element: "a"
+        element: "a",
+        classes: "alb-button"
       }) }}
 
     </div>

@@ -1,0 +1,97 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       {# The standalone H1 has been removed from here #}
+
+        <form class="form" method="post">
+       
+            {# Import all required macros at the top of the form #}
+            {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+            {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+            {# Use the 'call' syntax to wrap all the inputs in a single fieldset #}
+            {% call govukFieldset({
+              legend: {
+                text: "Add your tenant’s details",
+                classes: "govuk-fieldset__legend--xl",
+                isPageHeading: true
+              }
+            }) %}
+
+              {{ govukInput({
+                label: {
+                  text: "Tenant’s name"
+                },
+                id: "event-name",
+                name: "eventName"
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Tenant’s email address"
+                },
+                hint: {
+                  text: ""
+                },
+                id: "email",
+                name: "email",
+                type: "email",
+                autocomplete: "email",
+                spellcheck: false
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Tenant’s mobile number"
+                },
+                id: "phone-number",
+                name: "phoneNumber",
+                type: "tel",
+                autocomplete: "tel",
+                classes: "govuk-input--width-20"
+              }) }}
+
+              {{ govukDateInput({
+                id: "passport-issued",
+                namePrefix: "passport-issued",
+                fieldset: {
+                  legend: {
+                    text: "Tenancy start date"
+                  }
+                },
+                hint: {
+                  text: "For example, 27 3 2007"
+                }
+              }) }}
+
+            {% endcall %} {# End of the fieldset block #}
+
+
+            {{ govukButton({
+              text: "Save and continue",
+              classes: "alb-button"
+            }) }}
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
