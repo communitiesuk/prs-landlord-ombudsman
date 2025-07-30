@@ -8,14 +8,13 @@
    we first 'capture' its full HTML content into a variable. 
 #}
 {% set disputeContent %}
-  <p>If you have a dispute with your landlord, you should try and negotiate directly, keeping a record of all your correspondence, ideally in writing.</p>
-  <p>You could potentially use a mediator or register a dispute with the Ombudsman.</p>
-  <h3 class="govuk-heading-m">Contact the ombudsman</h3>
-  <p class="govuk-body">Steps to be completed before raising a dispute:</p>
+  <p class="govuk-body">You should follow these steps before raising a landlord dispute:</p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>gather evidence</li>
-    <li>contact the housing team at your local council</li>
+    <li>contact your landlord directly with your concerns in the first instance</li>
+    <li>gather evidence - this could be pictures or paperwork relating to your issue</li>
+    <li>contact the housing team at your local council to see if they can help</li>
   </ul>
+  <h3 class="govuk-heading-m">Contact the ombudsman</h3>
   {% from "govuk/components/button/macro.njk" import govukButton %}
   {{ govukButton({ text: "Raise a dispute" }) }}
 {% endset %}
@@ -27,16 +26,9 @@
       text: "Tenancy and rent"
     },
     content: {
-      html: '<p class="govuk-body">A tenancy agreement is a contract between you and a landlord.</p>
-            <p>It lets you live in a property as long as you pay your rent and follow the rules. It also sets out the legal terms and conditions of your tenancy. It can be written down or oral (a spoken agreement).</p>
-            <p>A tenancy can either be:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>fixed-term (running for a set period of time)</li>
-              <li>periodic (running on a week-by-week or month-by-month basis)</li>
-            </ul>
+      html: '<p class="govuk-body">A tenancy agreement is a contract between you and a landlord and lets you live in a property as long as you pay your rent and follow the rules. It also sets out the legal terms and conditions of your tenancy. A tenancy can either befixed-term (running for a set period of time) orperiodic (running on a week-by-week or month-by-month basis).</p>
             <h3 class="govuk-heading-m">Rent increases</h3>
-            <p>If your landlord wants to increase your rent, they must serve you with a formal notice known as a Section 13 notice. Normally, this notice must be served one month before a new rent starts.</p>
-            <p>They can only raise your rent once every 12 months - you can challenge the amount of the increase if you feel it is unreasonable.</p>
+            <p>If the landlord wants to increase your rent, they must give you a Section 13 notice., one month before a new rent is payable.</p>
       '
     }
   },
@@ -47,7 +39,7 @@
     content: {
       html: '
         <p class="govuk-body">You must keep your rental property in a good state, telling your landlord about any necessary repairs and fixing any damage you may cause. Your landlord handles structural and major repairs.</p>
-        <p>Your responsibilities as a tenant include minor repairs like changing light bulbs, replacing batteries in smoke detectors, and unclogging sinks, unless the problem is due to a structural issue.</p>
+        <p>You shopuld minor repairs like changing light bulbs, replacing batteries in smoke detectors, and unclogging sinks.</p>
         '
     }
   },
