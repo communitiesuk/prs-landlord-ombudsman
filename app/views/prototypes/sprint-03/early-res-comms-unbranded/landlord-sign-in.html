@@ -28,6 +28,7 @@
       </ul>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
 
       <form action="/prototypes/sprint-03/early-res-comms-unbranded/handle-sign-in" method="post">
 
@@ -41,15 +42,15 @@
   name: "emailAddress"
 }) }}
 
-{{ govukInput({
-  label: {
-    text: "Password",
-    classes: "govuk-label--m"
-  },
-  classes: "govuk-!-width-one-half",
-  id: "password",
-  name: "passWord"
-}) }}
+            {{ govukPasswordInput({
+              label: {
+                text: "Password",
+                classes: "govuk-label--m"
+              },
+              id: "password-input",
+              name: "password",
+              classes: "govuk-!-width-one-half"
+            }) }}
 
 <p><a href="#">Forgot your password</a></p>
 
