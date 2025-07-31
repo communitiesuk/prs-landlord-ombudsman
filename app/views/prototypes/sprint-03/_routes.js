@@ -69,19 +69,36 @@ router.post('/early-res-comms/select-role', (req, res) => {
   res.redirect(`sign-in?role=${userRole}`);
 });
 
+/*
 // Route 4: Catches the '/sign-in' URL and checks the query parameter
 router.get('/early-res-comms/sign-in', (req, res) => {
   // Read the role from the query parameter
   const role = req.query.role;
+  //Save the role to the session here as well
+  req.session.data['userRole'] = role;
   
   // Render the correct template based on the role
   res.render(`prototypes/sprint-03/early-res-comms/${role}-sign-in`);
+});
+*/
+
+// NEW Route 4: A single route to handle both showing and submitting the sign-in page
+router.all('/early-res-comms/sign-in', (req, res) => {
+  // If the form was submitted, it's a POST request
+  if (req.method === 'POST') {
+    res.redirect('account');
+  } 
+  // Otherwise, it's a GET request to show the page
+  else {
+    const role = req.query.role;
+    req.session.data['userRole'] = role; // Save role to session
+    res.render(`prototypes/sprint-03/early-res-comms/${role}-sign-in`);
+  }
 });
 
 // Route 5: Sign-in form handler - simplified path
 router.post('/early-res-comms/handle-sign-in', (req, res) => {
   res.redirect('account');
-  req.session.data['userRole'] = userRole;
 });
 
 // Route 6: Account page - UPDATED

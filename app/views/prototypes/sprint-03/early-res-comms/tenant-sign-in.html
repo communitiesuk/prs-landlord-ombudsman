@@ -25,7 +25,7 @@
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
 
-      <form action="/prototypes/sprint-03/early-res-comms/handle-sign-in" method="post">
+      <form action="sign-in" method="post">
 
             {{ govukInput({
             label: {
@@ -52,12 +52,13 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Sign in"
+  text: "Sign in",
+  name: "UserRole",
+  value: "tenant"
 }) }}
 
 </form>
 
     </div>
   </div>
-
 {% endblock %}
