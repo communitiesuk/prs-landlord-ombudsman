@@ -81,6 +81,7 @@ router.get('/early-res-comms/sign-in', (req, res) => {
 // Route 5: Sign-in form handler - simplified path
 router.post('/early-res-comms/handle-sign-in', (req, res) => {
   res.redirect('account');
+  req.session.data['userRole'] = userRole;
 });
 
 // Route 6: Account page - UPDATED
