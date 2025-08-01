@@ -97,9 +97,9 @@ router.all('/early-res-comms/sign-in', (req, res) => {
 });
 
 // Route 5: Sign-in form handler - simplified path
-router.post('/early-res-comms/handle-sign-in', (req, res) => {
-  res.redirect('account');
-});
+//router.post('/early-res-comms/handle-sign-in', (req, res) => {
+  //res.redirect('account');
+//});
 
 // Route 6: Account page - UPDATED
 router.get('/early-res-comms/account', (req, res) => {
@@ -165,6 +165,7 @@ router.post('/early-res-comms-unbranded/select-role', (req, res) => {
   res.redirect(`sign-in?role=${userRole}`);
 });
 
+/*
 // Route 4: Catches the '/sign-in' URL and checks the query parameter
 router.get('/early-res-comms-unbranded/sign-in', (req, res) => {
   // Read the role from the query parameter
@@ -174,10 +175,26 @@ router.get('/early-res-comms-unbranded/sign-in', (req, res) => {
   res.render(`prototypes/sprint-03/early-res-comms-unbranded/${role}-sign-in`);
 });
 
-// Route 5: Sign-in form handler - simplified path
-router.post('/early-res-comms-unbranded/handle-sign-in', (req, res) => {
-  res.redirect('account');
+*/
+
+// NEW Route 4: A single route to handle both showing and submitting the sign-in page
+router.all('/early-res-comms-unbranded/sign-in', (req, res) => {
+  // If the form was submitted, it's a POST request
+  if (req.method === 'POST') {
+    res.redirect('account');
+  } 
+  // Otherwise, it's a GET request to show the page
+  else {
+    const role = req.query.role;
+    req.session.data['userRole'] = role; // Save role to session
+    res.render(`prototypes/sprint-03/early-res-comms-unbranded/${role}-sign-in`);
+  }
 });
+
+// Route 5: Sign-in form handler - simplified path
+//router.post('/early-res-comms-unbranded/handle-sign-in', (req, res) => {
+  //res.redirect('account');
+//});
 
 // Route 6: Account page - UPDATED
 router.get('/early-res-comms-unbranded/account', (req, res) => {
