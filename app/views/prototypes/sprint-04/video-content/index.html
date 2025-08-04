@@ -1,0 +1,212 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Video guides to common questions – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+  /* Responsive video container */
+  .govuk-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #0b0c0c;
+  }
+  .govuk-video-wrapper iframe,
+  .govuk-video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  /* Playlist item styles for vertical layout */
+  .playlist-item {
+    display: block; /* Changed from flex to block */
+    padding: 0;
+    border: 1px solid #b1b4b6;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #0b0c0c;
+  }
+  .playlist-item:hover {
+    cursor: pointer;
+  }
+  .playlist-item.active {
+    border-color: #1d70b8;
+    box-shadow: 0 0 0 3px #1d70b8;
+    outline: 3px solid transparent;
+  }
+  /* Styles for the full-width thumbnail image */
+  .playlist-item-thumb {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .playlist-item-title {
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 15px;
+  }
+  /* Underline the title text on hover for the whole item */
+  .playlist-item:hover .playlist-item-title {
+    text-decoration: underline;
+  }
+</style>
+
+{% set playlistData = [
+  {
+    "id": "video1",
+    "title": "Who is responsible for repairs",
+    "embedUrl": "https://www.youtube.com/embed/xBnvw9BeaLY?si=W-tki6WloqnRe5aY",
+    "thumbnailUrl": "/public/images/thumb1.jpg",
+    "transcript": "
+      <p class='govuk-body'>Your landlord is responsible for most of the repairs to your home and this would include the main structure of your home -  the walls, the windows, the roof, the supply of gas water electricity and sanitation, so that's the pipes the wires and the plug sockets and also for space heating and heating water so that's the boiler that heats your water and your home.</p>
+      <p class='govuk-body'>As a tenant it's your responsibility to inform the landlord of any repairs that are needed. It's a good idea to inform the landlord as soon as possible and keep a record of what you've told your landlord and when just in case you need it later your landlord should do the repairs as soon as they can but a lot can depend on the natures with the repair whether parts need to be ordered or contractors arranged.</p>
+    "
+  },
+  {  
+    "id": "video2",
+    "title": "How long should repairs take",
+    "embedUrl": "https://www.youtube.com/embed/vCXDqExvm6U?si=T8eiMt0CK8ahb_tE",
+    "thumbnailUrl": "/public/images/thumb2.jpg",
+    "transcript": "
+    <p class='govuk-body'>One of the things private renters ask us the most is how long should it take my landlord to do repairs your landlord should do repairs in a reasonable time from when you report a problem but how long is reasonable?</p>
+    <p class='govuk-body'>Well the law doesn’t say it depends on how urgent the problem is, how vulnerable the people living in the property are and what your landlord has to do to fix the problem for example if they have to wait for parts or contractors. Here are three common things that can affect how long is reasonable: </p>
+    <h3 class='govuk-heading-s'>Health problems, vulnerable tenants</h3>
+    <p class='govuk-body'>Tenants repairs are urgent if they put people who live in your home at risk of serious harm. Some people could be more seriously affected: children, older or vulnerable people and those with disabilities or Mobility problems.  Make sure your landlord knows if the health and safety of someone in your home is seriously affected</p>
+    <h3 class='govuk-heading-s'>Cold weather</h3>
+    <p class='govuk-body'>Some repairs should be fixed more quickly in winter like a broken boiler. tell your landlord if you're concerned about the impact on your health and potential damage to the property if repairs aren’t done quickly.</p>
+    <h3 class='govuk-heading-s'>Damage and risk of injury</h3>
+    <p class='govuk-body'>Your landlord should treat repairs as an emergency if they are needed to make your home safe or stop more damage for example broken external door locks, leaking pipes that might cause damage or get into electrics, unsafe wiring or blocked drains.</p>
+    "
+  },
+  {
+    "id": "video3",
+    "title": "How to write to your landlord",
+    "embedUrl": "/public/images/letter.mp4",
+    "thumbnailUrl": "/public/images/thumb3.jpg",
+    "transcript": "
+    <p class='govuk-body'>What do we mean when we say ‘put it in writing?</p>
+    <p class='govuk-body'>It could be an email or a text or whatsapp message, not just a pen and paper letter.</p>
+    <p class='govuk-body'>It helps you remember what happened and when, and good tenants keep landlords informed.</p>
+    <p class='govuk-body'>Start with your name and address so your landlord remembers who you are say the facts – something is broken. How long for or how its affecting you ask for it to be fixed.</p>
+    <p class='govuk-body'>Say how urgent it is, or say when you will be at home to have it fixed. </p>
+    <p class='govuk-body'>Your landlord needs to know if there is a problem in their property. </p>
+    <p class='govuk-body'>Most Landlords are happy to fix problems, but if they don’t repair it, you have a record that you asked.</p>
+    "
+  }
+] %}
+
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Video guides to common questions
+      </h1>
+      
+      <div id="main-video-container" class="govuk-video-wrapper"></div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Transcript</h2>
+      <div id="video-transcript"></div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      
+      <h2 class="govuk-heading-m">Playlist</h2>
+
+      {% for video in playlistData %}
+        <a href="#" class="playlist-item" data-video-id="{{ video.id }}">
+          {# The title now comes before the image #}
+          <div class="playlist-item-title-wrapper">
+            <p class="govuk-body-s playlist-item-title">{{ video.title }}</p>
+          </div>
+          <img class="playlist-item-thumb" src="{{ video.thumbnailUrl }}" alt="">
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+
+<script type="application/json" id="page-data">
+  {
+    "playlist": {{ playlistData | dump | safe }}
+  }
+</script>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dataElement = document.getElementById('page-data');
+    const pageData = JSON.parse(dataElement.textContent);
+    const playlist = pageData.playlist;
+
+    const mainVideoContainer = document.getElementById('main-video-container');
+    const videoTranscript = document.getElementById('video-transcript');
+    const playlistLinks = document.querySelectorAll('.playlist-item');
+
+    function updateContent(videoId) {
+      const selectedVideo = playlist.find(video => video.id === videoId);
+
+      if (selectedVideo) {
+        mainVideoContainer.innerHTML = '';
+
+        if (selectedVideo.embedUrl.includes('youtube.com')) {
+          const iframe = document.createElement('iframe');
+          iframe.src = selectedVideo.embedUrl;
+          iframe.title = "Main video player";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          mainVideoContainer.appendChild(iframe);
+        } else {
+          const video = document.createElement('video');
+          video.controls = true;
+          const source = document.createElement('source');
+          source.src = selectedVideo.embedUrl;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.insertAdjacentText('beforeend', 'Sorry, your browser doesn\'t support embedded videos.');
+          mainVideoContainer.appendChild(video);
+        }
+
+        videoTranscript.innerHTML = selectedVideo.transcript;
+
+        playlistLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.videoId === videoId);
+        });
+      }
+    }
+
+    playlistLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const videoId = event.currentTarget.dataset.videoId;
+        updateContent(videoId);
+      });
+    });
+
+    if (playlist.length > 0) {
+      updateContent(playlist[0].id);
+    }
+  });
+</script>
+{% endblock %}

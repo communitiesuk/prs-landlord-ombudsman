@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+  .govuk-summary-card {
+    border: 1px solid #b1b4b6;
+    margin-bottom: 30px;
+  }
+  .govuk-summary-card__title-wrapper {
+    padding: 15px 20px;
+    background: #f3f2f1;
+    /* border-bottom has been removed from this rule */
+  }
+  .govuk-summary-card__title {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    margin: 0;
+  }
+  @media (min-width: 40.0625em) {
+    .govuk-summary-card__title {
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+  }
+  .govuk-summary-card__content {
+    padding: 0 20px;
+  }
+</style>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      {# --- Property Details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Property details</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Rental property address" },
+                value: { html: "45 Holland Road<br>Hove<br>BN3 2HG" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "rental property address" } ] }
+              },
+              {
+                key: { text: "Tenancy start date" },
+                value: { text: "16 July 2025" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenancy start date" } ] }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      {# --- Your Details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Your details</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "John Smith" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "your name" } ] }
+              },
+              {
+                key: { text: "Email" },
+                value: { text: "johnsmith@gmail.com" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "your email" } ] }
+              },
+              {
+                key: { text: "Phone number" },
+                value: { text: "07717013830" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "your phone number" } ] }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      {# --- Tenant Details Card --- #}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Tenant details</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: "Laurence Ellis" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenant name" } ] }
+              },
+              {
+                key: { text: "Email" },
+                value: { text: "laurence.ellis@hotmail.com" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenant email" } ] }
+              },
+              {
+                key: { text: "Phone number" },
+                value: { text: "07567013690" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenant phone number" } ] }
+              },
+              {
+                key: { text: "Tenancy start date" },
+                value: { text: "16 July 2025" },
+                actions: { items: [ { href: "#", text: "Change", visuallyHiddenText: "tenancy start date" } ] }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-3">
+        Send your registration
+      </h2>
+
+      <p class="govuk-body">
+        By sending these registration details, you are confirming that the answers you have given, to the best of your knowledge, are correct.
+      </p>
+
+      <form method="post" novalidate>
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

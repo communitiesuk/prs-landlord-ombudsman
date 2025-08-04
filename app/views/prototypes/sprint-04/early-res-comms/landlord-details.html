@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       {# The standalone H1 has been removed from here #}
+
+       <form class="form" method="post">
+
+            {# Import the fieldset, input, and button macros #}
+            {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+
+            {# Use the 'call' syntax to wrap the form elements in a fieldset #}
+            {% call govukFieldset({
+              legend: {
+                text: "Add your details",
+                classes: "govuk-fieldset__legend--xl",
+                isPageHeading: true
+              }
+            }) %}
+
+              {{ govukInput({
+                label: {
+                  text: "Name"
+                },
+                id: "event-name",
+                name: "eventName"
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Email address"
+                },
+                hint: {
+                  text: ""
+                },
+                id: "email",
+                name: "email",
+                type: "email",
+autocomplete: "email",
+                spellcheck: false
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Mobile phone number"
+                },
+                id: "phone-number",
+                name: "phoneNumber",
+                type: "tel",
+                autocomplete: "tel",
+                classes: "govuk-input--width-20"
+              }) }}
+
+            {% endcall %} {# End of the fieldset block #}
+
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

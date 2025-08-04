@@ -25,3 +25,6 @@ router.use("/prototypes/sprint-02", sprint02);
 
 const sprint03 = require("./views/prototypes/sprint-03/_routes");
 router.use("/prototypes/sprint-03", sprint03);
+
+const sprint04 = require("./views/prototypes/sprint-04/_routes");
+router.use("/prototypes/sprint-04", sprint04);

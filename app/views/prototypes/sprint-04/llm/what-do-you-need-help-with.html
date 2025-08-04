@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the problem with your housing? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          name: "maintanenceRepairs",
+          fieldset: {
+            legend: {
+              text: "What is the problem with your housing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select the issues you are having with your housing, you can select more than one option"
+          },
+          items: [
+            {
+              value: "gas-electricity",
+              text: "Gas, electricity, boiler, heating or hot water supply is not working",
+              hint: {
+                text: "Includes heating that is not working well"
+              }
+            },
+            {
+              value: "outside-doors-walls",
+              text: "Outside doors, walls, roof or windows are dangerous or need repair",
+              hint: {
+                text: "Includes uneven flooring, broken stairs"
+              }
+            },
+            {
+              value: "pests",
+              text: "Mice or other pests are causing a problem",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "damp-or-mould",
+              text: "Damp or mould is growing inside",
+              hint: {
+                text: ""
+              }
+            }, 
+            {
+              value: "plumbing",
+              text: " Plumbing and leaks (inside or outside)",
+              hint: {
+                text: "Includes toilets, pipes, drains, sinks, showers and baths"
+              }
+            },
+            {
+              value: "my-landlord-is-not-responding",
+              text: "My landlord is not responding to my requests for repairs"
+            },
+            {
+              value: "harassment-from-landlord",
+              text: "Harassment from landlord",
+              hint: {
+                text: "Includes threatening or intimidating behaviour, discrimination, entering property without prior agreement"
+              }
+            },
+            {
+              value: "tenancy-deposit-scheme",
+              text: "Not enrolled in Tenancy Deposit Scheme"
+            },
+            {
+              value: "other",
+              text: "Other",
+              hint: {
+                text: "Please describe the issue in the next steps"
+              }
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

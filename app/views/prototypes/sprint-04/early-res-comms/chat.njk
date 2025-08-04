@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+  .chat-container {
+    border: 2px solid #0b0c0c;
+    padding: 20px;
+    height: 500px; /* Set a fixed height */
+    overflow-y: auto; /* Add a vertical scrollbar only when needed */
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-message { max-width: 80%; padding: 10px 15px; border-radius: 10px; margin-bottom: 10px; opacity: 0; animation: fadeIn 0.5s forwards; }
+  .chat-message--tenant { background-color: #f3f2f1; margin-right: auto; }
+  .chat-message--landlord { background-color: #25D366; margin-left: auto; }
+  .chat-message--landlord p { color: #FFFFFF; }
+  .typing-indicator { color: #505a5f; margin-bottom: 10px; padding: 10px 15px; font-style: italic; display: none; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .chat-input-container { display: flex; align-items: flex-end; }
+  .chat-input-container .govuk-form-group { flex-grow: 1; margin-bottom: 0; }
+  .chat-input-container .govuk-button { margin-bottom: 0; }
+  .chat-message img { max-width: 100%; height: auto; border-radius: 5px; margin-top: 5px; }
+  .govuk-button--blue {
+    background-color: #1d70b8;
+    box-shadow: 0 2px 0 #003078;
+  }
+  .govuk-button--blue:hover {
+    background-color: #005ea5;
+  }
+</style>
+
+{# Import all needed components at the top of the content block #}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Message your {{ "tenant" if userRole == 'landlord' else "landlord" }}</h1>
+  <p class="govuk-body govuk-hint">Property address: 45 Holland Road, Hove, BN3 2HG</p>
+    <div id="chat-container" class="chat-container">
+      <div id="typing-indicator" class="typing-indicator">
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Typing...</p>
+      </div>
+    </div>
+
+    <div class="govuk-!-margin-top-2">
+      <div class="chat-input-container">
+        {{ govukInput({
+          label: {
+            text: 'Your message',
+            classes: 'govuk-label--s govuk-visually-hidden'
+          },
+          id: 'chat-message-input',
+          name: 'chatMessage'
+        }) }}
+
+        {{ govukButton({
+          text: "Send",
+          classes: "govuk-!-margin-left-2 govuk-button--blue"
+        }) }}
+      </div>
+      <div class="govuk-!-margin-top-4">
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          name: "fileUpload1",
+          label: {
+            text: "Upload a file"
+          },
+          javascript: true
+        }) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-l">Guidance</h2>
+    {% include guidancePath %}
+  </div>
+</div>
+
+<script type="application/json" id="page-data">
+  {
+    "conversation": {{ conversation | dump | safe }}
+  }
+</script>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dataElement = document.getElementById('page-data');
+    const pageData = JSON.parse(dataElement.textContent);
+    const conversationScript = pageData.conversation;
+
+    const chatContainer = document.getElementById('chat-container');
+    const typingIndicator = document.getElementById('typing-indicator');
+
+    let messageIndex = 0;
+
+    function displayNextMessage() {
+      if (messageIndex >= conversationScript.messages.length) {
+        typingIndicator.style.display = 'none';
+        return;
+      }
+
+      const message = conversationScript.messages[messageIndex];
+      const delay = message.sender === 'landlord' ? 1500 : 2000;
+
+      typingIndicator.style.display = 'block';
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      setTimeout(() => {
+        typingIndicator.style.display = 'none';
+
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', `chat-message--${message.sender}`);
+        
+        let messageHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1"><strong>${message.sender === 'landlord' ? 'Landlord' : 'Tenant'}</strong></p>`;
+        
+        if (message.text) {
+          messageHTML += `<p class="govuk-body-m govuk-!-margin-bottom-0">${message.text}</p>`;
+        }
+
+        if (message.imageUrl) {
+          messageHTML += `<img src="${message.imageUrl}" alt="User uploaded image">`;
+        }
+
+        if (message.datestamp) {
+          messageHTML += `<p class="govuk-body-xs govuk-!-margin-top-1 govuk-!-margin-bottom-0" style="text-align: left; opacity: 0.8;">${message.datestamp}</p>`;
+        }
+
+        messageDiv.innerHTML = messageHTML;
+        
+        chatContainer.insertBefore(messageDiv, typingIndicator);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        messageIndex++;
+        displayNextMessage();
+
+      }, delay);
+    }
+
+    displayNextMessage();
+  });
+</script>
+{% endblock %}

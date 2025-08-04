@@ -1,0 +1,121 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Getting help with a private rental",
+      href: "#"
+    },
+    {
+      text: "Create a landlord account",
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Create a landlord account
+      </h1>
+
+      <p>All private landlords in England with assured or regulated tenancies are required by law to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>join the Private Rented Sector Landlord Ombudsman Service, including those who use a managing agent</li>
+        <li>register themselves and their rental properties on the Private Rented Sector Database</li>
+      </ul>
+
+        {{ govukWarningText({
+          text: "Landlords could be subject to penalties if they market or let out a property without registering it and providing the required information.",
+          iconFallbackText: "Warning"
+        }) }}
+
+      <p>Use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>register yourself and your rental properties on the Private Rented Sector Database</li>
+        <li>join the Private Rented Sector Landlord Ombudsman Service</li>
+        <li>add your contact details</li>
+        <li>add a tenant’s contact details</li>
+      </ul>
+
+      <!-- <p>Registering takes around 5 minutes.</p> -->
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "When you've completed registration, you can message your tenant to resolve an issue or dispute."
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>You will need:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your tenant's email address and mobile phone number</li>
+        <li>your tenant's tenancy start date</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "property-details",
+        isStartButton: true,
+        classes: "alb-button"
+      }) }}
+
+
+
+ 
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <!-- <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside> -->
+
+    </div>
+  </div>
+
+{% endblock %}
