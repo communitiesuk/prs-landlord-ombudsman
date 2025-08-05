@@ -2,7 +2,7 @@ const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
 const path = require('path');
 
-const conversation = require('../../../data/conversation.js');
+const conversation = require('../../../data/conversation-landlord-positive.js');
 const guidancePaths = {
   landlord: 'prototypes/sprint-04/early-res-comms/partials/landlord-guidance.njk',
   tenant: 'prototypes/sprint-04/early-res-comms/partials/tenant-guidance.njk'
